@@ -21,3 +21,5 @@ Beauty + Technology + Design = ✨
 🌍 Coming soon: [minaverse.dev](https://minaverse.dev)
 
 Building the world I want to live in.
+
+## Creator of MINAVERSE — where beauty meets technology.
