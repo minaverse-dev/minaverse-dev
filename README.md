@@ -1,16 +1,23 @@
-## Hi there 👋
+## 👋 Welcome to MINAVERSE
 
-<!--
-**minaverse-dev/minaverse-dev** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+## About Me
+👋 Hello! I'm Mina – Creator of MINAVERSE 🪐
+Beauty + Technology + Design = ✨
 
-Here are some ideas to get you started:
+💄 I build beauty devices, AI-powered personalization tools, and web platforms.  
+💡 Combining CAD, coding, and creativity to reimagine K-beauty tech.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+🔧 Tech Stack:
+- Fusion 360 / Flask / HTML-CSS-JS / Notion API
+- GitHub / YouTube / React (learning)
+
+## 🚀 Projects
+- [Kinesta-Web](https://github.com/minaverse-dev/kinesta-web) – Product landing page
+- [Skin Analyzer MVP](https://github.com/minaverse-dev/skin-analyzer-mvp) – 3D model prototype
+- [Notion Landing](https://github.com/minaverse-dev/notion-landing) – Notion-based intro page
+
+## Contact
+📫 Contact: minaverse.dev@gmail.com  
+🌍 Coming soon: [minaverse.dev](https://minaverse.dev)
+
+Building the world I want to live in.
