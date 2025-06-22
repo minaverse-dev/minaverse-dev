@@ -22,7 +22,7 @@ Beauty + Technology + Design = ✨
 
 ## 📫 Contact  
 Email: [minaverse.dev@gmail.com](mailto:minaverse.dev@gmail.com)  
-🌍 Coming soon: [minaverse.dev](https://minaverse-dev)
+🌍 https://github.com/minaverse-dev/
 
 ---
 
