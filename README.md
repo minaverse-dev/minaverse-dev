@@ -16,12 +16,17 @@ Beauty + Technology + Design = ✨
 - React (learning)
 
 ## 🚀 Projects  
-- **Kinesta-Web** – Product landing page  
-- **Skin Analyzer MVP** – 3D model prototype  
-- **Notion Landing** – Notion-based intro page  
 
+- **Skin Analyzer MVP** – 3D model prototype  
+
+
+## Projects
+- **skin-analyzer-mvp** - [skin-analyzer-mvp](https://github.com/minaverse-dev/skin-analyzer-mvp)  
+- **Notion Landing** – Notion-based intro page  
+- **Kinesta-Web** – Product landing page  
+  
 ## 📫 Contact  
-Email: [minaverse.dev@gmail.com](mailto:minaverse.dev@gmail.com)  
+📧 [minaverse.dev@gmail.com](mailto:minaverse.dev@gmail.com)  
 🌍 https://github.com/minaverse-dev/
 
 ---
