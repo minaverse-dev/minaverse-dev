@@ -7,20 +7,38 @@ Beauty + Technology + Design = ✨
 💄 I build beauty devices, AI-powered personalization tools, and web platforms.  
 💡 Combining CAD, coding, and creativity to reimagine K-beauty tech.
 
+**🔹 Engineering Background**
+- 20+ years engineering experience including world's largest combined power plant design
+- Advanced CAD/3D modeling expertise across multiple platforms
+- Licensed Industrial Engineer & Professional Engineering Association Member
+
+**🔹 K-Beauty Technology Pioneer**
+- Licensed Beauty Technology Specialist with device development experience
+- Successfully launched beauty products through Kinesta brand
+- Strategic partnerships with Korean Beauty Association & global beauty manufacturers
+
+**🔹 Current Focus**
+- Building AI-powered personalized beauty devices
+- Combining traditional Korean beauty wisdom with modern IoT technology
+- Developing skin analysis MVP with hardware + software integration
+
+**🔹 Certifications & Education**
+- Korean National Licensed Esthetician
+- Government-Certified Industrial Engineer (Manufacturing/CAD)
+- Currently pursuing Information Processing Engineer certification
+- Harvard CS50 program participant
+
+**🔹 Notable Projects**
+- Skin Analyzer MVP: IoT-enabled beauty device with AI personalization
+- Multi-device charging dock system development
+- Professional-grade beauty device prototyping
+
 ## 🔧 Tech Stack  
-- Fusion 360  
-- Flask  
-- HTML / CSS / JavaScript  
-- Notion API  
-- GitHub / YouTube  
-- React (learning)
+- **Engineering**: Fusion 360, AutoCAD, Revit MEP, Creo Parametric, Microstation
+- **Development**: Flask, HTML/CSS/JavaScript  
+- **Tools**: Notion API, GitHub, React (learning)
 
-## 🚀 Projects  
-
-- **Skin Analyzer MVP** – 3D model prototype  
-
-
-## Projects
+## 🚀 Projects
 - **skin-analyzer-mvp** - [skin-analyzer-mvp](https://github.com/minaverse-dev/skin-analyzer-mvp)  
 - **Notion Landing** – Notion-based intro page  
 - **Kinesta-Web** – Product landing page  
