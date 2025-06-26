@@ -39,7 +39,7 @@ Beauty + Technology + Design = ✨
 - Development of AI/ML-powered Beauty Technology Solutions
 
 
-Experienced in developing AI-powered beauty solutions with proven expertise in creating domain-specific AI services through OpenAI API model fine-tuning.
+> Experienced in developing AI-powered beauty solutions with proven expertise in creating domain-specific AI services through OpenAI API model fine-tuning.
 
 
 ## 🔧 Tech Stack  
