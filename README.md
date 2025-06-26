@@ -33,9 +33,18 @@ Beauty + Technology + Design = ✨
 - Multi-device charging dock system development
 - Professional-grade beauty device prototyping
 
+**🔹 AI Projects**
+- Machine Learning & Artificial Intelligence Experience
+- AI Model Fine-tuning and Optimization
+- Development of AI/ML-powered Beauty Technology Solutions
+
+
+Experienced in developing AI-powered beauty solutions with proven expertise in creating domain-specific AI services through OpenAI API model fine-tuning.
+
+
 ## 🔧 Tech Stack  
 - **Engineering**: Fusion 360, AutoCAD, Revit MEP, Creo Parametric, Microstation
-- **Development**: Flask, HTML/CSS/JavaScript  
+- **Development**: Flask, HTML/CSS/JavaScript, AI Model Fine-tuning  
 - **Tools**: Notion API, GitHub, React (learning)
 
 ## 🚀 Projects
