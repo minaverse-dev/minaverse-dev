@@ -14,7 +14,7 @@ Beauty + Technology + Design = ✨
 
 **🔹 K-Beauty Technology Pioneer**
 - Licensed Beauty Technology Specialist with device development experience
-- Successfully launched beauty products through Kinesta brand
+- Hands-on experience in beauty product lifecycle management
 - Strategic partnerships with Korean Beauty Association & global beauty manufacturers
 
 **🔹 Current Focus**
