@@ -21,10 +21,10 @@ Beauty + Technology + Design = ✨
 - Combining traditional Korean beauty wisdom with modern IoT technology
 - Developing skin analysis MVP with hardware + software integration
 
-**🔹 Certifications**
-- Government-Certified Industrial Engineer (Manufacturing/CAD, 2000)
+**🔹 License & Certifications**
+- Korean National Licensed Industrial Engineer (Manufacturing/CAD, 2000)
 - Korean National Licensed Esthetician
-- Project Management (Primavera P6)
+- Project Management Certification (Primavera P6)
 - Microsoft Office Specialist 2003
 
 **🔹 Notable Projects**
