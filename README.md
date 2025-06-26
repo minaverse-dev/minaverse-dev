@@ -1,4 +1,4 @@
-# 👋 Welcome to MINAVERSE
+# 👋 Welcome to MinAverse
 
 ## About Me  
 👋 Hello! I'm Mina – Creator of MINAVERSE 🪐  
