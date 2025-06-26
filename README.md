@@ -34,9 +34,9 @@ Beauty + Technology + Design = ✨
 - Professional-grade beauty device prototyping
 
 **🔹 AI Projects**
-- Machine Learning & Artificial Intelligence Experience
-- AI Model Fine-tuning and Optimization
-- Development of AI/ML-powered Beauty Technology Solutions
+- OpenAI GPT Fine-tuning for K-Beauty Domain
+- Beauty Skin Analysis AI Model Development  
+- Personalized Beauty Recommendation Systems
 
 
 > Experienced in developing AI-powered beauty solutions with proven expertise in creating domain-specific AI services through OpenAI API model fine-tuning.
@@ -44,7 +44,7 @@ Beauty + Technology + Design = ✨
 
 ## 🔧 Tech Stack  
 - **Engineering**: Fusion 360, AutoCAD, Revit MEP, Creo Parametric, Microstation
-- **Development**: Flask, HTML/CSS/JavaScript, AI Model Fine-tuning  
+- **Development**: Flask, HTML/CSS/JavaScript
 - **Tools**: Notion API, GitHub, React (learning)
 
 ## 🚀 Projects
