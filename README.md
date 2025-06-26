@@ -2,10 +2,9 @@
 
 ## About Me  
 👋 Hello! I'm Mina – Creator of MINAVERSE 🪐  
+Transforming decades of engineering mastery into next-generation beauty technology.
+💄 I build beauty devices, AI-powered personalization tools, and web platforms.
 Beauty + Technology + Design = ✨
-
-💄 I build beauty devices, AI-powered personalization tools, and web platforms.  
-💡 Combining CAD, coding, and creativity to reimagine K-beauty tech.
 
 **🔹 Engineering Background**
 - 20+ years engineering experience including world's largest combined power plant design
