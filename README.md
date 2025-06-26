@@ -21,11 +21,11 @@ Beauty + Technology + Design = ✨
 - Combining traditional Korean beauty wisdom with modern IoT technology
 - Developing skin analysis MVP with hardware + software integration
 
-**🔹 Certifications & Education**
+**🔹 Certifications**
+- Government-Certified Industrial Engineer (Manufacturing/CAD, 2000)
 - Korean National Licensed Esthetician
-- Government-Certified Industrial Engineer (Manufacturing/CAD)
-- Currently pursuing Information Processing Engineer certification
-- Harvard CS50 program participant
+- Project Management (Primavera P6)
+- Microsoft Office Specialist 2003
 
 **🔹 Notable Projects**
 - Skin Analyzer MVP: IoT-enabled beauty device with AI personalization
@@ -36,7 +36,6 @@ Beauty + Technology + Design = ✨
 - OpenAI GPT Fine-tuning for K-Beauty Domain
 - Beauty Skin Analysis AI Model Development  
 - Personalized Beauty Recommendation Systems
-
 
 > Experienced in developing AI-powered beauty solutions with proven expertise in creating domain-specific AI services through OpenAI API model fine-tuning.
 
