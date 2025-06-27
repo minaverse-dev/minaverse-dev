@@ -19,11 +19,11 @@ Beauty + Technology + Design = ✨
 **🔹 Current Focus**
 - Building AI-powered personalized beauty devices
 - Combining traditional Korean beauty wisdom with modern IoT technology
-- Developing skin analysis MVP with hardware + software integration
+- Developing blockchain-integrated beauty analytics platform
 
 **🔹 Notable Projects**
 - Skin Analyzer MVP: IoT-enabled beauty device with AI personalization
-- Multi-device charging dock system development
+- CMA Beauty Analyzer: Blockchain-integrated personal color analysis platform
 - Professional-grade beauty device prototyping
 
 **🔹 AI Projects**
@@ -77,18 +77,26 @@ Beauty + Technology + Design = ✨
 - **🔗 Blockchain**: NFT Development, Smart Contracts (Learning)
 - **📚 Currently**: Information Processing Engineer | CS50 | Solidity Basics
 
-
 ## 🚀 Projects
+
+**Public Repositories:**
 - **skin-analyzer-mvp** - [skin-analyzer-mvp](https://github.com/minaverse-dev/skin-analyzer-mvp)  
 - **Notion Landing** – Notion-based intro page  
-- **Kinesta-Web** – Product landing page  
-  
-## 📫 Contact  
+- **Kinesta-Web** – Product landing page
+
+**Featured Projects:**
+- **CMA Beauty Analyzer** (Private Repository)
+  - AI-powered personal color analysis with blockchain integration
+  - React + Smart Contracts + NFT implementation
+  - *Available upon request for business inquiries*
+
+## 📧 Contact
+
+**For collaboration or demo access:**  
 📧 [minaverse.dev@gmail.com](mailto:minaverse.dev@gmail.com)  
 🌍 https://github.com/minaverse-dev/
 
 ---
-
-> *Building the world I want to live in.*  
+> *Cherish Myself Always*  
 >  
 > **Creator of MINAVERSE — where beauty meets technology.**
