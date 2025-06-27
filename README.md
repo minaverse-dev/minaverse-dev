@@ -21,12 +21,6 @@ Beauty + Technology + Design = ✨
 - Combining traditional Korean beauty wisdom with modern IoT technology
 - Developing skin analysis MVP with hardware + software integration
 
-**🔹 License & Certifications**
-- Korean National Licensed Industrial Engineer (Manufacturing/CAD, 2000)
-- Korean National Licensed Esthetician
-- Project Management Certification (Primavera P6)
-- Microsoft Office Specialist 2003
-
 **🔹 Notable Projects**
 - Skin Analyzer MVP: IoT-enabled beauty device with AI personalization
 - Multi-device charging dock system development
@@ -39,11 +33,50 @@ Beauty + Technology + Design = ✨
 
 > Experienced in developing AI-powered beauty solutions with proven expertise in creating domain-specific AI services through OpenAI API model fine-tuning.
 
+<details>
+<summary>🔹 License & Certifications</summary>
+
+- Korean National Licensed Industrial Engineer (Manufacturing/CAD, 2000)
+- Korean National Licensed Esthetician
+- Project Management Certification (Primavera P6)
+- Microsoft Office Specialist 2003
+
+</details>
 
 ## 🔧 Tech Stack  
-- **Engineering**: Fusion 360, AutoCAD, Revit MEP, Creo Parametric, Microstation
-- **Development**: Flask, HTML/CSS/JavaScript
-- **Tools**: Notion API, GitHub, React (learning)
+
+<details>
+<summary>⚙️ Engineering</summary>
+
+- Fusion 360
+- AutoCAD  
+- Revit MEP
+- Creo Parametric
+- Microstation
+
+</details>
+
+<details>
+<summary>💻 Development</summary>
+
+- Flask
+- HTML/CSS/JavaScript
+- React (Learning)
+
+</details>
+
+<details>
+<summary>🛠️ Tools</summary>
+
+- Notion API
+- GitHub
+
+</details>
+
+- **💄 Beauty Tech**: AI-Powered Personalization, Device Integration
+- **🔗 Blockchain**: NFT Development, Smart Contracts (Learning)
+- **📚 Currently**: Information Processing Engineer | CS50 | Solidity Basics
+
 
 ## 🚀 Projects
 - **skin-analyzer-mvp** - [skin-analyzer-mvp](https://github.com/minaverse-dev/skin-analyzer-mvp)  
