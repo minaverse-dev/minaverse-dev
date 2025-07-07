@@ -39,8 +39,14 @@ https://tubular-rolypoly-2d3616.netlify.app/
 
 ## 📝 License & Usage
 한국의 엔지니어들을 위해서 작성하였으나, 마음대로 수정하시고 배포하셔도 됩니다.
+궁금한 점 있으시면 메일로 문의주세요. 감사합니다.
 
 Made for Korean Engineers, but feel free to modify and distribute as needed.
+
+## 📧 Contact
+궁금한 점 있으시면 메일로 문의주세요. 감사합니다.
+
+If you have any questions, please feel free to contact me via email. Thank you.
 
 
 
