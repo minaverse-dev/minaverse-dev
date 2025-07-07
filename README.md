@@ -62,14 +62,14 @@ Beauty + Technology + Design = ✨
 
 
 <details> 
- <summary><h3> 👨‍💼 CEO 주요이력 </h3> </summary>
- - ⚡ **Power Plant Layout Design**
- - 🖥️ **Human-Machine-Interface Control**  
- - 🔌 **Electrical Design**
- - 🎨 **Artwork Design**
- - ⚙️ **Mechanical Design (CAD/CAM/CAE)**
+ <summary><h3> 👨‍💼 CEO 주요이력 </h3> </summary>  
+ - ⚡ **Power Plant Layout Design**    
+ - 🖥️ **Human-Machine-Interface Control**    
+ - 🔌 **Electrical Design**  
+ - 🎨 **Artwork Design**  
+ - ⚙️ **Mechanical Design (CAD/CAM/CAE)**  
  - 📋 **Project Management Certification**  
- - 💄 **Esthetician**    
+ - 💄 **Esthetician**      
 </details>  
 
 <details> 
