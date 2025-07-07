@@ -66,8 +66,11 @@
 *Building the future of personalized beauty technology* 🌟
 
  ---
- 
-### Engineering Calculator Collection
+
+<details> 
+<summary>🎁 Special Gift for Vistor </summary>
+
+### Engineering Calculator Collections
 - electrical-calculator
 - right-triangle-calculator
 - stress-strain-calculator
@@ -75,6 +78,12 @@
 - unit-converter
 
   It's Free!
+
+</details>
+ 
+
+  
+---  
 
 ## 📧 Contact
 
