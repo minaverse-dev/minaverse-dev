@@ -69,10 +69,10 @@ Beauty + Technology + Design = ✨
  - 🔌 **Electrical Design**
  - 🎨 **Artwork Design**
  - ⚙️ **Mechanical Design (CAD/CAM/CAE)**
- - 📋 **Project Management Certification**
+ - 📋 **Project Management Certification**  
 <h3> 🏆 CEO 주요자격 </h3> 
- - 💄 **Esthetician**
- - 🔧 **Industrial Engineer CAD/CAM**  
+ - 💄 **Esthetician**  
+ - 🔧 **Industrial Engineer CAD/CAM**      
 </details>  
 
 <details> 
