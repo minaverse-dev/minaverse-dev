@@ -6,12 +6,6 @@ Transforming decades of engineering mastery into next-generation beauty technolo
 💄 I build beauty devices, AI-powered personalization tools, and web platforms.  
 Beauty + Technology + Design = ✨
 
-
-## ✨ Beauty Device Innovation Platform
-
-### 💡 From Illuminating the World to Making You Shine
-*세상을 환하게 하던 기술로 당신을 빛나게*
-
 ---
 
 ## 🎯 독보적이고 독창적인 뷰티 디바이스 설계
@@ -58,26 +52,35 @@ Beauty + Technology + Design = ✨
 
 ---
 
-## 👨‍💼 CEO 주요이력
 
-- ⚡ **Power Plant Layout Design**
-- 🖥️ **Human-Machine-Interface Control**  
-- 🔌 **Electrical Design**
-- 🎨 **Artwork Design**
-- ⚙️ **Mechanical Design (CAD/CAM/CAE)**
-- 📋 **Project Management Certification**
 
-## 🏆 CEO 주요자격
+> ## ✨ Beauty Device Innovation Platform
+> 
+> ### 💡 From Illuminating the World to Making You Shine
+> *세상을 환하게 하던 기술로 당신을 빛나게*  
+> *Building the future of personalized beauty technology* 🌟
 
-- 💄 **Esthetician**
-- 🔧 **Industrial Engineer CAD/CAM**
 
-*Building the future of personalized beauty technology* 🌟
-
- ---
+<details> 
+> <summary><h3> 👨‍💼 CEO 주요이력 </h3> </summary>
+>
+> - ⚡ **Power Plant Layout Design**
+> - 🖥️ **Human-Machine-Interface Control**  
+> - 🔌 **Electrical Design**
+> - 🎨 **Artwork Design**
+> - ⚙️ **Mechanical Design (CAD/CAM/CAE)**
+> - 📋 **Project Management Certification**
+<details> 
+> <summary><h3> 🏆 CEO 주요자격 </h3>  </summary>  
+>
+> - 💄 **Esthetician**
+> - 🔧 **Industrial Engineer CAD/CAM**
+>
+</details>
 
 <details> 
 <summary>🎁 Special Gift for Vistor </summary>
+</details>
 
 ### Engineering Calculator Collections
 - electrical-calculator
@@ -89,18 +92,12 @@ Beauty + Technology + Design = ✨
   It's Free!
 
 </details>
- 
 
-  
----  
+> ## 📧 Contact
 
-## 📧 Contact
+> **For collaboration or demo access:**  
+> 📧 [minaverse.dev@gmail.com](mailto:minaverse.dev@gmail.com)  
+> 🌍 https://github.com/minaverse-dev/
 
-**For collaboration or demo access:**  
-📧 [minaverse.dev@gmail.com](mailto:minaverse.dev@gmail.com)  
-🌍 https://github.com/minaverse-dev/
-
----
 > 💎 *Cherish Myself Always*  
->  
 > **Creator of MINAVERSE — where beauty meets technology.**
