@@ -62,7 +62,7 @@ Beauty + Technology + Design = ✨
 
 
 <details> 
-<summary><h3>🕶️ CEO 주요이력</h3></summary>  
+<summary><h3>🎯 CEO 주요이력</h3></summary>  
 
 - ⚡ **Power Plant Layout Design**    
 - 🖥️ **Human-Machine-Interface Control**    
