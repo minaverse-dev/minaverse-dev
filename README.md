@@ -1,94 +1,71 @@
-# 👋 Welcome to MinAverse
+# ✨ Beauty Device Innovation Platform
 
-## About Me  
-👋 Hello! I'm Mina – Creator of MINAVERSE 🪐  
-Transforming decades of engineering mastery into next-generation beauty technology.  
-💄 I build beauty devices, AI-powered personalization tools, and web platforms.  
-Beauty + Technology + Design = ✨  
+## 💡 From Illuminating the World to Making You Shine
+*세상을 환하게 하던 기술로 당신을 빛나게 하는 기술로*
 
-**🔹 Engineering Background**
-- 20+ years engineering experience including world's largest combined power plant design
-- Advanced CAD/3D modeling expertise across multiple platforms
-- Licensed Industrial Engineer & Professional Engineering Association Member
+---
 
-**🔹 K-Beauty Technology Pioneer**
-- Licensed Beauty Technology Specialist with device development experience
-- Hands-on experience in beauty product lifecycle management
-- Strategic partnerships with Korean Beauty Association & global beauty manufacturers
+## 🎯 독보적이고 독창적인 뷰티 디바이스 설계
 
-**🔹 Current Focus**
-- Building AI-powered personalized beauty devices
-- Combining traditional Korean beauty wisdom with modern IoT technology
-- Developing blockchain-integrated beauty analytics platform
+### 🔬 피부 분석 디바이스
+혁신적인 센서 기술과 AI 분석을 통한 정밀한 피부 상태 측정
 
-**🔹 Notable Projects**
-- Skin Analyzer MVP: IoT-enabled beauty device with AI personalization
-- CMA Beauty Analyzer: Blockchain-integrated personal color analysis platform
-- Professional-grade beauty device prototyping
+### 📊 체성분 분석 디바이스
+전신 건강 데이터를 실시간으로 분석하고 개인화된 인사이트 제공
 
-**🔹 AI Projects**
-- OpenAI GPT Fine-tuning for K-Beauty Domain
-- Beauty Skin Analysis AI Model Development  
-- Personalized Beauty Recommendation Systems
+### 🚀 혁신적인 뷰티 디바이스 설계
+- 🌿 **자연의 곡선을 응용한 파라메트릭 디자인 설계** *(특허 진행)*
+- ⚡ **차세대 HDL 기술을 이용한 하드웨어 구현**
 
-> Experienced in developing AI-powered beauty solutions with proven expertise in creating domain-specific AI services through OpenAI API model fine-tuning.
+---
 
-<details>
-<summary>🔹 License & Certifications</summary>
+## 🎮 측정 후 웰니스 포인트 획득 시스템으로 개인화
 
-- Korean National Licensed Industrial Engineer (Manufacturing/CAD, 2000)
-- Korean National Licensed Esthetician
-- Project Management Certification (Primavera P6)
-- Microsoft Office Specialist 2003
+### 📱 Core Applications
 
-</details>
+1. **🔍 personal-analyze-dapp** | 퍼스널 분석
+2. **💪 body-profile-dapp** | 전신 측정 분석, 운동기록  
+3. **⚙️ calibration-dapp** | 개인화 기술로 커스터마이징
 
-## 🔧 Tech Stack  
+---
 
-<details>
-<summary>⚙️ Engineering</summary>
+## 🤖 AI 기술을 이용한 체계적인 DB관리 시스템
 
-- Fusion 360
-- AutoCAD  
-- Revit MEP
-- Creo Parametric
-- Microstation
+### 🔒 Privacy-First Architecture
+1. **🏠 개인화된 DB는 로컬에만 저장**
+2. **🛡️ 개인정보 유출 없음** *(노션, 구글 스프레드 시트 등 이용)*
 
-</details>
+---
 
-<details>
-<summary>💻 Development</summary>
+## 🔗 스마트 컨트랙트와 연결 시스템으로 실물 토큰화
 
-- Flask
-- HTML/CSS/JavaScript
-- React (Learning)
+혁신적인 블록체인 기술과 웰니스의 만남
 
-</details>
+---
 
-<details>
-<summary>🛠️ Tools</summary>
+## 🚀 차세대 엔진과 융합
 
-- Notion API
-- GitHub
+**뷰티디바이스 dapp** → **웰니스 포인트 획득 시스템** → **차세대 엔진 결합**
 
-</details>
+---
 
-- **💄 Beauty Tech**: AI-Powered Personalization, Device Integration
-- **🔗 Blockchain**: NFT Development, Smart Contracts (Learning)
-- **📚 Currently**: Information Processing Engineer | CS50 | Solidity Basics
+## 👨‍💼 CEO 주요이력
 
-## 🚀 Projects
+- ⚡ **Power Plant Layout Design**
+- 🖥️ **Human-Machine-Interface Control**  
+- 🔌 **Electrical Design**
+- 🎨 **Artwork Design**
+- ⚙️ **Mechanical Design (CAD/CAM/CAE)**
+- 📋 **Project Management Certification**
 
-**Public Repositories:**
-- **skin-analyzer-mvp** - [skin-analyzer-mvp](https://github.com/minaverse-dev/skin-analyzer-mvp)  
-- **Notion Landing** – Notion-based intro page  
-- **Kinesta-Web** – Product landing page
+## 🏆 CEO 주요자격
 
-**Featured Projects:**
-- **CMA Beauty Analyzer** (Private Repository)
-  - AI-powered personal color analysis with blockchain integration
-  - React + Smart Contracts + NFT implementation
-  - *Available upon request for business inquiries*
+- 💄 **Esthetician**
+- 🔧 **Industrial Engineer CAD/CAM**
+
+---
+
+*Building the future of personalized beauty technology* 🌟
  
 ### Engineering Calculator Collection
 - electrical-calculator
@@ -104,6 +81,6 @@ Beauty + Technology + Design = ✨
 🌍 https://github.com/minaverse-dev/
 
 ---
-> *Cherish Myself Always*  
+> 💎 *Cherish Myself Always*  
 >  
 > **Creator of MINAVERSE — where beauty meets technology.**
