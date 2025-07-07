@@ -62,27 +62,22 @@ Beauty + Technology + Design = ✨
 
 
 <details> 
-> <summary><h3> 👨‍💼 CEO 주요이력 </h3> </summary>
->
-> - ⚡ **Power Plant Layout Design**
-> - 🖥️ **Human-Machine-Interface Control**  
-> - 🔌 **Electrical Design**
-> - 🎨 **Artwork Design**
-> - ⚙️ **Mechanical Design (CAD/CAM/CAE)**
-> - 📋 **Project Management Certification**
-<details> 
-> <summary><h3> 🏆 CEO 주요자격 </h3>  </summary>  
->
-> - 💄 **Esthetician**
-> - 🔧 **Industrial Engineer CAD/CAM**
->
-</details>
+ <summary><h3> 👨‍💼 CEO 주요이력 </h3> </summary>
+
+ - ⚡ **Power Plant Layout Design**
+ - 🖥️ **Human-Machine-Interface Control**  
+ - 🔌 **Electrical Design**
+ - 🎨 **Artwork Design**
+ - ⚙️ **Mechanical Design (CAD/CAM/CAE)**
+ - 📋 **Project Management Certification**
+<h3> 🏆 CEO 주요자격 </h3> 
+ - 💄 **Esthetician**
+ - 🔧 **Industrial Engineer CAD/CAM**  
+</details>  
 
 <details> 
 <summary>🎁 Special Gift for Vistor </summary>
-</details>
-
-### Engineering Calculator Collections
+  ### Engineering Calculator Collections
 - electrical-calculator
 - right-triangle-calculator
 - stress-strain-calculator
@@ -90,7 +85,6 @@ Beauty + Technology + Design = ✨
 - unit-converter
 
   It's Free!
-
 </details>
 
 > ## 📧 Contact
