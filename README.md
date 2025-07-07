@@ -68,7 +68,7 @@ Beauty + Technology + Design = ✨
 - ⚡ **Power Plant Layout Design**    
 - 🖥️ **Human-Machine-Interface Control**    
 - 🔌 **Electrical Design**  
-- 🎨 **Artwork Design**  
+- 🦾 **Artwork Design**  
 - ⚙️ **Mechanical Design (CAD/CAM/CAE)**  
 - 📋 **Project Management Certification**  
 - 💄 **Esthetician**      
