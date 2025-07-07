@@ -37,5 +37,11 @@ https://tubular-rolypoly-2d3616.netlify.app/
 - Engineering Mathematics
 - Material Science Calculations
 
+## 📝 License & Usage
+한국의 엔지니어들을 위해서 작성하였으나, 마음대로 수정하시고 배포하셔도 됩니다.
+
+Made for Korean Engineers, but feel free to modify and distribute as needed.
+
+
 
 
