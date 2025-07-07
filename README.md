@@ -76,15 +76,17 @@ Beauty + Technology + Design = ✨
 </details>
 
 <details> 
-<summary>🎁 Special Gift for Vistor </summary>
-  ### Engineering Calculator Collections
+<summary>🎁 Special Gift for Visitor</summary>
+
+### Engineering Calculator Collections
 - electrical-calculator
 - right-triangle-calculator
 - stress-strain-calculator
 - thermal-stress-calculator
 - unit-converter
 
-  It's Free!
+It's Free!
+
 </details>
 
 > ## 📧 Contact
