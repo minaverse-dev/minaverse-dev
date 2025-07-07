@@ -1,7 +1,7 @@
 # ✨ Beauty Device Innovation Platform
 
 ## 💡 From Illuminating the World to Making You Shine
-*세상을 환하게 하던 기술로 당신을 빛나게 하는 기술로*
+*세상을 환하게 하던 기술로 당신을 빛나게*
 
 ---
 
