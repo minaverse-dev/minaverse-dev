@@ -91,6 +91,11 @@ Beauty + Technology + Design = ✨
   - *Available upon request for business inquiries*
  
 ### Engineering Calculator Collection
+- electrical-calculator
+- right-triangle-calculator
+- stress-strain-calculator
+- thermal-stress-calculator
+- unit-converter
 
 ## 📧 Contact
 
