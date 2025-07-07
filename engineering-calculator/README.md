@@ -1,0 +1,55 @@
+# Engineering Calculator Collection
+> 실무용 엔지니어링 계산 도구 모음집
+
+## 🔧 Available Tools
+### ⚡ Electrical Calculator
+- 저항, 전력, 전류 계산
+- 옴의 법칙 적용
+- **Keywords**: 전기계산기, 옴의법칙, 저항계산
+전기 계산기  
+https://silly-melba-008981.netlify.app/  
+
+### 📐 Right Triangle Calculator  
+- 피타고라스 정리 계산
+- 삼각함수 계산
+- **Keywords**: 직각삼각형, 피타고라스정리    
+https://capable-truffle-cc5444.netlify.app/    
+
+응력-변형률 계산기  
+https://magnificent-bunny-343e55.netlify.app/  
+
+뷰티 디바이스용 열응력 계산기  
+https://lively-meerkat-26765e.netlify.app/  
+
+단위 환산기  
+https://tubular-rolypoly-2d3616.netlify.app/  
+
+
+## 🎯 Features
+- **전기 계산기**: 옴의 법칙, 저항 계산, 전력 계산
+- **구조 계산**: 응력-변형률, 재료역학 계산
+- **열역학 계산**: 열응력, 열팽창 계산
+- **단위 변환**: 공학 단위 변환 도구
+
+## 🛠️ Tech Stack
+- HTML5, CSS3, JavaScript
+- Responsive Design
+- Engineering Mathematics
+- Material Science Calculations
+
+```
+📁 engineering-calculator
+    ├── 📁 electrical-calculator
+    │   └── 📄 index.html
+    ├── 📁 right-triangle-calculator
+    │   └── 📄 index.html
+    ├── 📁 stress-strain-calculator
+    │   └── 📄 index.html
+    ├── 📁 thermal-stress-calculator
+    │   └── 📄 index.html
+    ├── 📁 unit-converter
+    │   └── 📄 index.html
+    └── 📄 README.md
+```
+
+
