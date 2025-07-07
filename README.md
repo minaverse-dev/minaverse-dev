@@ -63,9 +63,9 @@
 - 💄 **Esthetician**
 - 🔧 **Industrial Engineer CAD/CAM**
 
----
-
 *Building the future of personalized beauty technology* 🌟
+
+ ---
  
 ### Engineering Calculator Collection
 - electrical-calculator
@@ -73,6 +73,8 @@
 - stress-strain-calculator
 - thermal-stress-calculator
 - unit-converter
+
+  It's Free!
 
 ## 📧 Contact
 
