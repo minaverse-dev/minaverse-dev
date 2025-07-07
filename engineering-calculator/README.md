@@ -37,19 +37,5 @@ https://tubular-rolypoly-2d3616.netlify.app/
 - Engineering Mathematics
 - Material Science Calculations
 
-```
-📁 engineering-calculator
-    ├── 📁 electrical-calculator
-    │   └── 📄 index.html
-    ├── 📁 right-triangle-calculator
-    │   └── 📄 index.html
-    ├── 📁 stress-strain-calculator
-    │   └── 📄 index.html
-    ├── 📁 thermal-stress-calculator
-    │   └── 📄 index.html
-    ├── 📁 unit-converter
-    │   └── 📄 index.html
-    └── 📄 README.md
-```
 
 
