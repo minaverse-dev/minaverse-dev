@@ -89,6 +89,8 @@ Beauty + Technology + Design = ✨
   - AI-powered personal color analysis with blockchain integration
   - React + Smart Contracts + NFT implementation
   - *Available upon request for business inquiries*
+ 
+### Engineering Calculator Collection
 
 ## 📧 Contact
 
