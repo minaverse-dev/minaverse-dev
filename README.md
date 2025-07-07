@@ -1,6 +1,15 @@
-# ✨ Beauty Device Innovation Platform
+# 👋 Welcome to MinAverse
 
-## 💡 From Illuminating the World to Making You Shine
+## About Me  
+👋 Hello! I'm Mina – Creator of MINAVERSE 🪐  
+Transforming decades of engineering mastery into next-generation beauty technology.  
+💄 I build beauty devices, AI-powered personalization tools, and web platforms.  
+Beauty + Technology + Design = ✨
+
+
+## ✨ Beauty Device Innovation Platform
+
+### 💡 From Illuminating the World to Making You Shine
 *세상을 환하게 하던 기술로 당신을 빛나게*
 
 ---
