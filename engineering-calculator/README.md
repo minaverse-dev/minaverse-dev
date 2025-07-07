@@ -45,8 +45,7 @@ Made for Korean Engineers, but feel free to modify and distribute as needed.
 ## 📧 Contact
 궁금한 점 있으시면 메일로 문의주세요. 감사합니다.
 
-If you have any questions, please feel free to contact me via email. Thank you.
-
+If you have any questions, please contact me via email. Thank you.
 
 
 
