@@ -85,6 +85,9 @@ Beauty + Technology + Design = ✨
 - thermal-stress-calculator
 - unit-converter
 
+### Working Tool Collections
+- [daily-work-log-generator](https://whimsical-kitten-a7d062.netlify.app/)
+
 It's Free!
 
 </details>
