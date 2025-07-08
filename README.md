@@ -79,11 +79,11 @@ Beauty + Technology + Design = ✨
 <summary>🎁 Special Gift for Visitor</summary>
 
 ### Engineering Calculator Collections
-- electrical-calculator
-- right-triangle-calculator
-- stress-strain-calculator
-- thermal-stress-calculator
-- unit-converter
+- [electrical-calculator](https://silly-melba-008981.netlify.app/)
+- [right-triangle-calculator](https://capable-truffle-cc5444.netlify.app/)
+- [stress-strain-calculator](https://magnificent-bunny-343e55.netlify.app/)
+- [thermal-stress-calculator](https://lively-meerkat-26765e.netlify.app/)
+- [unit-converter](https://tubular-rolypoly-2d3616.netlify.app/)
 
 ### Working Tool Collections
 - [daily-work-log-generator](https://whimsical-kitten-a7d062.netlify.app/)
