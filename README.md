@@ -88,14 +88,16 @@ Beauty + Technology + Design = ✨
 
 ### Productivity-toolkit
 - 업무 관리를 위한 웹 기반 생산성 도구 모음
-- [daily-work-log-generator](https://whimsical-kitten-a7d062.netlify.app/) //일일 업무일지 생성기
-- [folder-structure-generator](https://jade-rabanadas-6d1bd1.netlify.app/) //폴더 구조 생성기
 
 ## Features
-- 📋 일일 업무일지 생성 및 관리
-- 📊 CSV/JSON/TXT 다양한 형태로 내보내기
-- 💾 로컬 스토리지 자동 저장
-- 📱 반응형 디자인 (모바일 지원)
+### 일일 업무일지 생성기 [daily-work-log-generator](https://whimsical-kitten-a7d062.netlify.app/)
+> 📋 일일 업무일지 생성 및 관리  
+> 📊 CSV/JSON/TXT 다양한 형태로 내보내기  
+> 💾 로컬 스토리지 자동 저장  
+> 📱 반응형 디자인 (모바일 지원)  
+
+### 폴더 구조 생성기 [folder-structure-generator](https://jade-rabanadas-6d1bd1.netlify.app/)
+> 프로젝트 폴더 구조를 시각적으로 생성하고 README.md에 활용해보세요
   
 It's Free!
 
