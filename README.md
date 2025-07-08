@@ -88,6 +88,14 @@ Beauty + Technology + Design = ✨
 ### Productivity-toolkit
 - [daily-work-log-generator](https://whimsical-kitten-a7d062.netlify.app/)
 
+- 일일 업무 관리를 위한 웹 기반 생산성 도구
+
+## Features
+- 📋 일일 업무일지 생성 및 관리
+- 📊 CSV/JSON/TXT 다양한 형태로 내보내기
+- 💾 로컬 스토리지 자동 저장
+- 📱 반응형 디자인 (모바일 지원)
+  
 It's Free!
 
 </details>
