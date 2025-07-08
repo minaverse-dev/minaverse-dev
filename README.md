@@ -79,12 +79,12 @@ Beauty + Technology + Design = ✨
 <summary>🎁 Special Gift for Visitor</summary>
 
 ### Engineering Calculator Collection
-- 공학 계산을 위한 도구 모음 
-- [electrical-calculator](https://silly-melba-008981.netlify.app/) //전기 계산기
-- [right-triangle-calculator](https://capable-truffle-cc5444.netlify.app/) //직각 삼각형 계산기
-- [stress-strain-calculator](https://magnificent-bunny-343e55.netlify.app/) //응력-변환율 계산기
-- [thermal-stress-calculator](https://lively-meerkat-26765e.netlify.app/) //열응력 계산기
-- [unit-converter](https://tubular-rolypoly-2d3616.netlify.app/)  //단위 환산기
+- 공학 계산을 위한 도구 모음
+### 전기 계산기 [electrical-calculator](https://silly-melba-008981.netlify.app/)
+### 직각 삼각형 계산기 [right-triangle-calculator](https://capable-truffle-cc5444.netlify.app/)
+### 응력-변환율 계산기 [stress-strain-calculator](https://magnificent-bunny-343e55.netlify.app/)
+### 열응력 계산기 [thermal-stress-calculator](https://lively-meerkat-26765e.netlify.app/)
+### 단위 환산기 [unit-converter](https://tubular-rolypoly-2d3616.netlify.app/)
 
 ## Productivity-toolkit
 - 업무 관리를 위한 웹 기반 생산성 도구 모음
@@ -99,9 +99,9 @@ Beauty + Technology + Design = ✨
 > 프로젝트 폴더 구조를 시각적으로 생성하고 README.md에 활용해보세요
 
 ### 그라디언트 생성기 [gradient-generator](https://lucky-hotteok-32c2f0.netlify.app/)
-> 🎨 색상 추출 기능
-> 🪄 컬러 커스터마이징이 가능한 그라디언트 생성기입니다.
-> 🏳️‍⚧️ CSS 코드로 실시간 반영됩니다. 
+> 🎨 색상 추출 기능  
+> 🪄 컬러 커스터마이징이 가능한 그라디언트 생성기입니다.  
+> 🏳️‍⚧️ CSS 코드로 실시간 반영됩니다.   
   
 It's Free!
 
