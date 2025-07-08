@@ -122,10 +122,11 @@ Beauty + Technology + Design = ✨
 ### 폴더 구조 생성기 [folder-structure-generator](https://jade-rabanadas-6d1bd1.netlify.app/)
 > 프로젝트 폴더 구조를 시각적으로 생성하고 README.md에 활용해보세요
 
-### 그라디언트 생성기 [gradient-generator](https://lucky-hotteok-32c2f0.netlify.app/)
+### 그라디언트 생성기 [gradient-generator](https://earnest-swan-d91f0d.netlify.app/)
 > 🎨 색상 추출 기능  
 > 🪄 컬러 커스터마이징이 가능한 그라디언트 생성기입니다.  
-> 🏳️‍⚧️ CSS 코드로 실시간 반영됩니다.   
+> 🏳️‍⚧️ CSS 코드로 실시간 반영됩니다.
+> 📱 반응형 디자인 (모바일 지원)  
   
 It's Free!
 
