@@ -78,7 +78,7 @@ Beauty + Technology + Design = ✨
 <details> 
 <summary>🎁 Special Gift for Visitor</summary>
 
-### Engineering Calculator Collections
+### Engineering Calculator Collection
 - [electrical-calculator](https://silly-melba-008981.netlify.app/)
 - [right-triangle-calculator](https://capable-truffle-cc5444.netlify.app/)
 - [stress-strain-calculator](https://magnificent-bunny-343e55.netlify.app/)
