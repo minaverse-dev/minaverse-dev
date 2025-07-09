@@ -10,3 +10,15 @@
 > folder-structure-generator-mobile // 폴더 구조 생성기 - 모바일 사용 가능  
 > gradient-generator // 그라데이션 생성기    
 
+폴더 구조 생성기를 이용하시면 이렇게 예쁜 폴더 구조를 만드셔서   
+깃허브나 기타 자료에 활용하실 수 있습니다.  
+
+```
+📁 miaverse-dev
+    └── 📁 productivity-toolkit
+        ├── 📄 daily-work-log-generator.html
+        ├── 📄 folder-structure-generator-mobile.html
+        ├── 📄 folder-structure-generator.html
+        ├── 📄 gradient-generator.html
+        └── 📄 work-log-generator.html
+```
