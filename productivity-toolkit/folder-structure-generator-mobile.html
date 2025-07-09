@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폴더 구조 생성기</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        .main-content {
+            padding: 15px;
+        }
+
+        /* 모바일에서는 세로 레이아웃 */
+        .desktop-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .mobile-layout {
+            display: none;
+        }
+
+        .input-section, .output-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+        }
+
+        .output-section {
+            background: #fff;
+        }
+
+        .section-title {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon {
+            font-size: 1.1em;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .folder-input {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            min-width: 0; /* 플렉스 아이템이 줄어들 수 있도록 */
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .depth-select {
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            background: white;
+            font-size: 14px;
+            min-width: 120px;
+            flex-shrink: 0;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            white-space: nowrap;
+            min-height: 44px; /* 터치 친화적 높이 */
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a6fd8;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .btn-full {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .folder-list {
+            background: #fff;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .folder-item {
+            padding: 10px 8px;
+            margin: 4px 0;
+            background: #f8f9fa;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .folder-item:hover {
+            background: #e9ecef;
+        }
+
+        .folder-path {
+            font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+            font-size: 12px;
+            color: #333;
+            flex: 1;
+            min-width: 0;
+            word-break: break-all;
+        }
+
+        .folder-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .depth-indicator {
+            font-size: 11px;
+            background: #667eea;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 8px;
+        }
+
+        .output-area {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+            font-size: 12px;
+            line-height: 1.5;
+            min-height: 250px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            word-break: break-all;
+        }
+
+        .controls {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .format-selector {
+            display: flex;
+            gap: 3px;
+            background: #e9ecef;
+            padding: 3px;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .format-btn {
+            flex: 1;
+            padding: 8px 12px;
+            border: none;
+            background: transparent;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+            min-height: 40px;
+        }
+
+        .format-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .status-message {
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .help-text {
+            font-size: 11px;
+            color: #666;
+            margin-top: 5px;
+            line-height: 1.3;
+        }
+
+        .tab-navigation {
+            display: none;
+            background: #fff;
+            border-bottom: 2px solid #e9ecef;
+            margin: -15px -15px 15px -15px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 15px 10px;
+            border: none;
+            background: transparent;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            color: #666;
+        }
+
+        .tab-btn.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+            background: #f8f9fa;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* 모바일 스타일 */
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+
+            .container {
+                border-radius: 10px;
+            }
+
+            .header {
+                padding: 15px;
+            }
+
+            .main-content {
+                padding: 10px;
+            }
+
+            .desktop-layout {
+                display: none;
+            }
+
+            .mobile-layout {
+                display: block;
+            }
+
+            .tab-navigation {
+                display: flex;
+            }
+
+            .input-section, .output-section {
+                padding: 15px;
+                border: 1px solid #e9ecef;
+            }
+
+            .folder-input {
+                gap: 10px;
+            }
+
+            .input-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .depth-select {
+                min-width: unset;
+                width: 100%;
+            }
+
+            .folder-item {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .folder-path {
+                font-size: 11px;
+                text-align: center;
+                padding: 5px;
+                background: #fff;
+                border-radius: 4px;
+            }
+
+            .folder-actions {
+                justify-content: center;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            .format-selector {
+                min-width: unset;
+                order: 1;
+            }
+
+            .output-area {
+                font-size: 11px;
+                padding: 12px;
+                min-height: 200px;
+            }
+
+            .btn {
+                min-height: 48px; /* 모바일에서 더 큰 터치 영역 */
+            }
+
+            .help-text {
+                font-size: 10px;
+            }
+        }
+
+        /* 매우 작은 화면 (320px 이하) */
+        @media (max-width: 320px) {
+            .header h1 {
+                font-size: 1.3rem;
+            }
+
+            .header p {
+                font-size: 0.85rem;
+            }
+
+            .main-content {
+                padding: 8px;
+            }
+
+            .input-section, .output-section {
+                padding: 12px;
+            }
+
+            .output-area {
+                min-height: 180px;
+                font-size: 10px;
+            }
+
+            .folder-path {
+                font-size: 10px;
+            }
+        }
+
+        /* 가로 모드 최적화 */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .output-area {
+                min-height: 150px;
+            }
+
+            .folder-list {
+                max-height: 120px;
+            }
+        }
+
+        /* 터치 최적화 */
+        @media (hover: none) and (pointer: coarse) {
+            .btn:hover {
+                transform: none;
+            }
+
+            .folder-item:hover {
+                background: #f8f9fa;
+            }
+
+            .btn:active {
+                transform: scale(0.98);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📁 폴더 구조 생성기</h1>
+            <p>프로젝트 폴더 구조를 시각적으로 생성하고 README.md에 활용해보세요</p>
+        </div>
+
+        <div class="main-content">
+            <!-- 데스크톱 레이아웃 -->
+            <div class="desktop-layout">
+                <div class="input-section">
+                    <h2 class="section-title">
+                        <span class="icon">⚙️</span>
+                        폴더 구조 입력
+                    </h2>
+
+                    <div class="input-group">
+                        <label>새 폴더/파일 추가</label>
+                        <div class="folder-input">
+                            <div class="input-row">
+                                <input type="text" id="folderInput" placeholder="예: src 또는 index.js">
+                                <button class="btn btn-primary" onclick="addFolder()">추가</button>
+                            </div>
+                            <select id="parentSelect" class="depth-select">
+                                <option value="">Root (최상위)</option>
+                            </select>
+                        </div>
+                        <div class="help-text">💡 폴더명을 입력하고 부모 폴더를 선택해주세요</div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>현재 폴더 목록</label>
+                        <div class="folder-list" id="folderList">
+                            <div style="text-align: center; color: #666; padding: 20px;">
+                                폴더를 추가해보세요
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="controls">
+                        <button class="btn btn-secondary" onclick="clearAll()">전체 삭제</button>
+                        <button class="btn btn-primary" onclick="loadTemplate()">템플릿 불러오기</button>
+                    </div>
+                </div>
+
+                <div class="output-section">
+                    <h2 class="section-title">
+                        <span class="icon">📋</span>
+                        생성된 구조
+                    </h2>
+
+                    <div class="controls">
+                        <div class="format-selector">
+                            <button class="format-btn active" onclick="setFormat('tree')">Tree 형태</button>
+                            <button class="format-btn" onclick="setFormat('markdown')">Markdown</button>
+                        </div>
+                        <button class="btn btn-primary" onclick="copyToClipboard()">📋 복사</button>
+                    </div>
+
+                    <div id="statusMessage"></div>
+                    <div class="output-area" id="outputArea">
+                        📁 프로젝트 폴더 구조가 여기에 표시됩니다
+                    </div>
+                </div>
+            </div>
+
+            <!-- 모바일 레이아웃 -->
+            <div class="mobile-layout">
+                <div class="tab-navigation">
+                    <button class="tab-btn active" onclick="switchTab('input')">📝 입력</button>
+                    <button class="tab-btn" onclick="switchTab('output')">📋 결과</button>
+                </div>
+
+                <div id="inputTab" class="tab-content active">
+                    <div class="input-section">
+                        <div class="input-group">
+                            <label>새 폴더/파일 추가</label>
+                            <div class="folder-input">
+                                <input type="text" id="folderInputMobile" placeholder="예: src 또는 index.js">
+                                <select id="parentSelectMobile" class="depth-select">
+                                    <option value="">Root (최상위)</option>
+                                </select>
+                                <button class="btn btn-primary btn-full" onclick="addFolderMobile()">➕ 폴더 추가</button>
+                            </div>
+                            <div class="help-text">💡 폴더명을 입력하고 부모 폴더를 선택한 후 추가 버튼을 눌러주세요</div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>현재 폴더 목록</label>
+                            <div class="folder-list" id="folderListMobile">
+                                <div style="text-align: center; color: #666; padding: 20px;">
+                                    폴더를 추가해보세요
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="controls">
+                            <button class="btn btn-secondary btn-full" onclick="clearAll()">🗑️ 전체 삭제</button>
+                            <button class="btn btn-primary btn-full" onclick="loadTemplate()">📂 템플릿 불러오기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="outputTab" class="tab-content">
+                    <div class="output-section">
+                        <div class="controls">
+                            <div class="format-selector">
+                                <button class="format-btn active" onclick="setFormat('tree')">Tree</button>
+                                <button class="format-btn" onclick="setFormat('markdown')">Markdown</button>
+                            </div>
+                            <button class="btn btn-primary btn-full" onclick="copyToClipboard()">📋 클립보드 복사</button>
+                        </div>
+
+                        <div id="statusMessageMobile"></div>
+                        <div class="output-area" id="outputAreaMobile">
+                            📁 프로젝트 폴더 구조가 여기에 표시됩니다
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let folders = [];
+        let currentFormat = 'tree';
+        let currentTab = 'input';
+
+        function switchTab(tab) {
+            currentTab = tab;
+            
+            // 탭 버튼 상태 변경
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[onclick="switchTab('${tab}')"]`).classList.add('active');
+            
+            // 탭 내용 변경
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(tab + 'Tab').classList.add('active');
+            
+            // 출력 탭으로 전환 시 구조 업데이트
+            if (tab === 'output') {
+                syncToMobile();
+                generateStructure();
+            }
+        }
+
+        function syncToMobile() {
+            // 데스크톱과 모바일 간 동기화
+            document.getElementById('outputAreaMobile').textContent = document.getElementById('outputArea').textContent;
+            updateParentSelectMobile();
+            updateFolderListMobile();
+        }
+
+        function clearAll() {
+            if (folders.length === 0) {
+                alert('삭제할 폴더가 없습니다');
+                return;
+            }
+            
+            if (confirm('모든 폴더를 삭제하시겠습니까?')) {
+                folders = [];
+                updateFolderList();
+                updateFolderListMobile();
+                updateParentSelect();
+                updateParentSelectMobile();
+                generateStructure();
+                showMessage('모든 폴더가 삭제되었습니다', 'success');
+            }
+        }
+
+        function addFolder() {
+            const input = document.getElementById('folderInput');
+            const parentSelect = document.getElementById('parentSelect');
+            _addFolder(input, parentSelect);
+        }
+
+        function addFolderMobile() {
+            const input = document.getElementById('folderInputMobile');
+            const parentSelect = document.getElementById('parentSelectMobile');
+            _addFolder(input, parentSelect);
+        }
+
+        function _addFolder(input, parentSelect) {
+            const folderName = input.value.trim();
+            
+            if (!folderName) {
+                showMessage('폴더명을 입력해주세요', 'error');
+                return;
+            }
+
+            const parentId = parentSelect.value;
+            let depth = 0;
+            let parentPath = '';
+            
+            if (parentId) {
+                const parentFolder = folders.find(f => f.id == parentId);
+                if (parentFolder) {
+                    depth = parentFolder.depth + 1;
+                    parentPath = parentFolder.fullPath || parentFolder.name;
+                }
+            }
+
+            const fullPath = parentPath ? `${parentPath}/${folderName}` : folderName;
+            
+            // 중복 체크
+            const isDuplicate = folders.some(f => 
+                f.fullPath === fullPath && f.parentId == (parentId || null)
+            );
+            
+            if (isDuplicate) {
+                showMessage('같은 이름의 폴더/파일이 이미 존재합니다', 'error');
+                return;
+            }
+            
+            const folderData = {
+                name: folderName,
+                depth: depth,
+                id: Date.now() + Math.random(),
+                isFile: folderName.includes('.'),
+                parentId: parentId || null,
+                fullPath: fullPath
+            };
+
+            folders.push(folderData);
+            input.value = '';
+            updateFolderList();
+            updateFolderListMobile();
+            updateParentSelect();
+            updateParentSelectMobile();
+            generateStructure();
+            showMessage('폴더가 추가되었습니다', 'success');
+        }
+
+        function updateParentSelect() {
+            _updateParentSelect(document.getElementById('parentSelect'));
+        }
+
+        function updateParentSelectMobile() {
+            _updateParentSelect(document.getElementById('parentSelectMobile'));
+        }
+
+        function _updateParentSelect(parentSelect) {
+            const folderOptions = folders
+                .filter(f => !f.isFile)
+                .sort((a, b) => {
+                    if (a.depth !== b.depth) return a.depth - b.depth;
+                    return a.name.localeCompare(b.name);
+                })
+                .map(folder => {
+                    const indent = '  '.repeat(folder.depth);
+                    return `<option value="${folder.id}">${indent}📁 ${folder.fullPath || folder.name}</option>`;
+                }).join('');
+            
+            parentSelect.innerHTML = '<option value="">Root (최상위)</option>' + folderOptions;
+        }
+
+        function removeFolder(id) {
+            const folderToRemove = folders.find(f => f.id === id);
+            if (!folderToRemove) return;
+            
+            const toRemove = [id];
+            const findChildren = (parentId) => {
+                folders.forEach(folder => {
+                    if (folder.parentId == parentId) {
+                        toRemove.push(folder.id);
+                        findChildren(folder.id);
+                    }
+                });
+            };
+            
+            findChildren(id);
+            folders = folders.filter(f => !toRemove.includes(f.id));
+            
+            updateFolderList();
+            updateFolderListMobile();
+            updateParentSelect();
+            updateParentSelectMobile();
+            generateStructure();
+            showMessage('폴더가 삭제되었습니다', 'success');
+        }
+
+        function updateFolderList() {
+            _updateFolderList(document.getElementById('folderList'));
+        }
+
+        function updateFolderListMobile() {
+            _updateFolderList(document.getElementById('folderListMobile'));
+        }
+
+        function _updateFolderList(folderList) {
+            if (folders.length === 0) {
+                folderList.innerHTML = '<div style="text-align: center; color: #666; padding: 20px;">폴더를 추가해보세요</div>';
+                return;
+            }
+
+            const sortedFolders = [...folders].sort((a, b) => {
+                if (a.depth !== b.depth) return a.depth - b.depth;
+                return a.name.localeCompare(b.name);
+            });
+
+            folderList.innerHTML = sortedFolders.map(folder => {
+                const indent = '  '.repeat(folder.depth);
+                const icon = folder.isFile ? '📄' : '📁';
+                return `
+                <div class="folder-item">
+                    <span class="folder-path">${indent}${icon} ${folder.fullPath || folder.name}</span>
+                    <div class="folder-actions">
+                        <span class="depth-indicator">D${folder.depth}</span>
+                        <button class="btn btn-danger" style="padding: 4px 8px; font-size: 12px;" 
+                                onclick="removeFolder(${folder.id})">삭제</button>
+                    </div>
+                </div>
+            `;}).join('');
+        }
+
+        function generateStructure() {
+            const outputArea = document.getElementById('outputArea');
+            const outputAreaMobile = document.getElementById('outputAreaMobile');
+            
+            if (folders.length === 0) {
+                const text = '📁 프로젝트 폴더 구조가 여기에 표시됩니다';
+                outputArea.textContent = text;
+                outputAreaMobile.textContent = text;
+                return;
+            }
+
+            let output = '';
+            
+            switch (currentFormat) {
+                case 'tree':
+                    output = generateTreeStructure();
+                    break;
+                case 'markdown':
+                    output = generateMarkdownStructure();
+                    break;
+            }
+
+            outputArea.textContent = output;
+            outputAreaMobile.textContent = output;
+        }
+
+        function generateTreeStructure() {
+            if (folders.length === 0) return '';
+            
+            const tree = buildHierarchicalTree();
+            return renderHierarchicalTree(tree);
+        }
+
+        function buildHierarchicalTree() {
+            const rootFolders = folders.filter(f => !f.parentId);
+            
+            function buildChildren(parentId) {
+                return folders
+                    .filter(f => f.parentId == parentId)
+                    .sort((a, b) => {
+                        if (a.isFile !== b.isFile) return a.isFile ? 1 : -1;
+                        return a.name.localeCompare(b.name);
+                    })
+                    .map(folder => ({
+                        ...folder,
+                        children: buildChildren(folder.id)
+                    }));
+            }
+            
+            return rootFolders
+                .sort((a, b) => {
+                    if (a.isFile !== b.isFile) return a.isFile ? 1 : -1;
+                    return a.name.localeCompare(b.name);
+                })
+                .map(folder => ({
+                    ...folder,
+                    children: buildChildren(folder.id)
+                }));
+        }
+
+        function renderHierarchicalTree(nodes, prefix = '', isRoot = true) {
+            let output = '';
+            
+            nodes.forEach((node, index) => {
+                const isLastNode = index === nodes.length - 1;
+                const icon = node.isFile ? '📄' : '📁';
+                
+                if (isRoot) {
+                    output += icon + ' ' + node.name + '\n';
+                } else {
+                    const connector = isLastNode ? '└── ' : '├── ';
+                    output += prefix + connector + icon + ' ' + node.name + '\n';
+                }
+                
+                if (node.children && node.children.length > 0) {
+                    let newPrefix;
+                    if (isRoot) {
+                        newPrefix = isLastNode ? '    ' : '    ';
+                    } else {
+                        newPrefix = prefix + (isLastNode ? '    ' : '│   ');
+                    }
+                    output += renderHierarchicalTree(node.children, newPrefix, false);
+                }
+            });
+            
+            return output;
+        }
+
+        function generateMarkdownStructure() {
+            if (folders.length === 0) return '';
+            
+            let output = '```\n';
+            output += generateTreeStructure();
+            output += '```';
+            return output;
+        }
+
+        function setFormat(format) {
+            currentFormat = format;
+            
+            document.querySelectorAll('.format-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            generateStructure();
+        }
+
+        function copyToClipboard() {
+            const outputArea = currentTab === 'output' ? 
+                document.getElementById('outputAreaMobile') : 
+                document.getElementById('outputArea');
+            
+            navigator.clipboard.writeText(outputArea.textContent).then(() => {
+                showMessage('클립보드에 복사되었습니다', 'success');
+            }).catch(() => {
+                showMessage('복사에 실패했습니다', 'error');
+            });
+        }
+
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('statusMessage');
+            const messageDivMobile = document.getElementById('statusMessageMobile');
+            
+            [messageDiv, messageDivMobile].forEach(div => {
+                if (div) {
+                    div.textContent = text;
+                    div.className = `status-message status-${type}`;
+                }
+            });
+            
+            setTimeout(() => {
+                [messageDiv, messageDivMobile].forEach(div => {
+                    if (div) {
+                        div.textContent = '';
+                        div.className = '';
+                    }
+                });
+            }, 3000);
+        }
+
+        function loadTemplate() {
+            const templates = [
+                { name: '웹 프로젝트', folders: [
+                    { name: 'src', depth: 0, isFile: false, parentId: null, fullPath: 'src' },
+                    { name: 'components', depth: 1, isFile: false, parentId: 'src', fullPath: 'src/components' },
+                    { name: 'pages', depth: 1, isFile: false, parentId: 'src', fullPath: 'src/pages' },
+                    { name: 'styles', depth: 1, isFile: false, parentId: 'src', fullPath: 'src/styles' },
+                    { name: 'utils', depth: 1, isFile: false, parentId: 'src', fullPath: 'src/utils' },
+                    { name: 'public', depth: 0, isFile: false, parentId: null, fullPath: 'public' },
+                    { name: 'package.json', depth: 0, isFile: true, parentId: null, fullPath: 'package.json' },
+                    { name: 'README.md', depth: 0, isFile: true, parentId: null, fullPath: 'README.md' }
+                ]},
+                { name: '기본 웹사이트', folders: [
+                    { name: 'my-website', depth: 0, isFile: false, parentId: null, fullPath: 'my-website' },
+                    { name: 'css', depth: 1, isFile: false, parentId: 'my-website', fullPath: 'my-website/css' },
+                    { name: 'style.css', depth: 2, isFile: true, parentId: 'css', fullPath: 'my-website/css/style.css' },
+                    { name: 'responsive.css', depth: 2, isFile: true, parentId: 'css', fullPath: 'my-website/css/responsive.css' },
+                    { name: 'js', depth: 1, isFile: false, parentId: 'my-website', fullPath: 'my-website/js' },
+                    { name: 'main.js', depth: 2, isFile: true, parentId: 'js', fullPath: 'my-website/js/main.js' },
+                    { name: 'utils.js', depth: 2, isFile: true, parentId: 'js', fullPath: 'my-website/js/utils.js' },
+                    { name: 'images', depth: 1, isFile: false, parentId: 'my-website', fullPath: 'my-website/images' },
+                    { name: 'assets', depth: 1, isFile: false, parentId: 'my-website', fullPath: 'my-website/assets' },
+                    { name: 'index.html', depth: 1, isFile: true, parentId: 'my-website', fullPath: 'my-website/index.html' },
+                    { name: 'README.md', depth: 1, isFile: true, parentId: 'my-website', fullPath: 'my-website/README.md' },
+                    { name: '.gitignore', depth: 1, isFile: true, parentId: 'my-website', fullPath: 'my-website/.gitignore' }
+                ]}
+            ];
+
+            const selectedTemplate = templates[Math.floor(Math.random() * templates.length)];
+            
+            // 기존 폴더 초기화
+            folders = [];
+            
+            // ID 매핑 및 폴더 생성
+            const baseId = Date.now();
+            const createdFolders = [];
+            
+            // 먼저 모든 폴더를 생성하되 parentId는 나중에 설정
+            selectedTemplate.folders.forEach((folder, index) => {
+                const realId = baseId + index;
+                createdFolders.push({
+                    name: folder.name,
+                    depth: folder.depth,
+                    id: realId,
+                    isFile: folder.isFile,
+                    parentId: null, // 나중에 설정
+                    fullPath: folder.fullPath,
+                    originalParentId: folder.parentId
+                });
+            });
+            
+            // 이제 parentId 설정
+            createdFolders.forEach(folder => {
+                if (folder.originalParentId) {
+                    // 부모 폴더 찾기 - 부모 폴더명으로 찾기
+                    const parentFolder = createdFolders.find(f => 
+                        f.name === folder.originalParentId && !f.isFile
+                    );
+                    if (parentFolder) {
+                        folder.parentId = parentFolder.id;
+                    }
+                }
+                delete folder.originalParentId; // 임시 속성 제거
+            });
+            
+            folders = createdFolders;
+            
+            updateFolderList();
+            updateFolderListMobile();
+            updateParentSelect();
+            updateParentSelectMobile();
+            generateStructure();
+            showMessage(`${selectedTemplate.name} 템플릿이 로드되었습니다!`, 'success');
+        }
+
+        // Enter 키로 폴더 추가
+        document.getElementById('folderInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addFolder();
+            }
+        });
+
+        document.getElementById('folderInputMobile').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addFolderMobile();
+            }
+        });
+
+        // 초기 상태 설정
+        generateStructure();
+        updateParentSelect();
+        updateParentSelectMobile();
+
+        // 화면 크기 변경 감지하여 동기화
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                // 데스크톱으로 전환시 모바일 데이터 동기화
+                syncToDesktop();
+            }
+        });
+
+        function syncToDesktop() {
+            updateFolderList();
+            updateParentSelect();
+            generateStructure();
+        }
+    </script>
+</body>
+</html>

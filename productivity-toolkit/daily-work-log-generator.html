@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일일 업무일지 생성기</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #48dbfb 0%, #f3f3f3 50%, #48dbfb 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #48dbfb, #764ba2);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 30px;
+        }
+        
+        .form-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-section h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .time-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        .progress-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .progress-input input[type="range"] {
+            flex: 1;
+        }
+        
+        .progress-value {
+            min-width: 60px;
+            text-align: center;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #14d3fd, #96e1f1);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, #f1717e, #f389bb);
+        }
+        
+        .preview-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .work-log-entry {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 8px 8px 0;
+            transition: transform 0.2s ease;
+        }
+        
+        .work-log-entry:hover {
+            transform: translateX(5px);
+        }
+        
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .entry-time {
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .entry-progress {
+            background: #667eea;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+        
+        .entry-project {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .entry-task {
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        
+        .entry-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .status-planned {
+            background: #ffeaa7;
+            color: #fdcb6e;
+        }
+        
+        .status-progress {
+            background: #74b9ff;
+            color: #0984e3;
+        }
+        
+        .status-completed {
+            background: #00b894;
+            color: white;
+        }
+        
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .export-section {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .export-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .close-modal:hover {
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .export-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🪞 일일 업무일지 생성기</h1>
+            <p>일일 업무일지를 작성 후 다른 플랫폼에 활용하세요.</p>
+        </div>
+        
+        <div class="main-content">
+            <!-- 입력 폼 섹션 -->
+            <div class="form-section">
+                <h3>📝 업무 입력</h3>
+                
+                <div class="form-group">
+                    <label for="workDate">날짜</label>
+                    <input type="date" id="workDate" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>시간</label>
+                    <div class="time-inputs">
+                        <input type="time" id="startTime" placeholder="시작 시간" required>
+                        <input type="time" id="endTime" placeholder="종료 시간" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="workCategory">업무구분</label>
+                    <select id="workCategory" required>
+                        <option value="">선택하세요</option>
+                        <option value="연구">연구 (R&D)</option>
+                        <option value="회의">회의/미팅</option>
+                        <option value="관리">프로젝트 관리</option>
+                        <option value="마케팅">마케팅/영업</option>
+                        <option value="웹제작">홈페이지 제작/배포</option>
+                        <option value="학습">학습 (자격증/강의)</option>
+                        <option value="기타">기타</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="projectName">프로젝트명</label>
+                    <input type="text" id="projectName" placeholder="예: 업무, 자격증" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="taskDetail">세부업무</label>
+                    <textarea id="taskDetail" placeholder="구체적인 업무 내용을 입력하세요" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="workStatus">진행상황</label>
+                    <select id="workStatus" required>
+                        <option value="">선택하세요</option>
+                        <option value="계획">계획</option>
+                        <option value="진행중">진행중</option>
+                        <option value="완료">완료</option>
+                        <option value="보류">보류</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>완료율</label>
+                    <div class="progress-input">
+                        <input type="range" id="progressRange" min="0" max="100" value="0">
+                        <span class="progress-value" id="progressValue">0%</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="collaborator">협업대상</label>
+                    <input type="text" id="collaborator" placeholder="예: 기획팀, 영업팀, 파트너사">
+                </div>
+                
+                <div class="form-group">
+                    <label for="notes">비고</label>
+                    <textarea id="notes" placeholder="추가 메모나 특이사항"></textarea>
+                </div>
+                
+                <button class="btn" onclick="addWorkEntry()">➕ 업무 추가</button>
+            </div>
+            
+            <!-- 미리보기 섹션 -->
+            <div class="preview-section">
+                <h3>📋 오늘의 업무일지</h3>
+                <div id="workLogPreview">
+                    <p style="text-align: center; color: #6c757d; padding: 40px;">
+                        업무를 추가하면 여기에 표시됩니다
+                    </p>
+                </div>
+                
+                <div class="summary-stats" id="summaryStats" style="display: none;">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalTasks">0</div>
+                        <div class="stat-label">총 업무</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="completedTasks">0</div>
+                        <div class="stat-label">완료</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="avgProgress">0%</div>
+                        <div class="stat-label">평균 진행률</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 내보내기 섹션 -->
+            <div class="export-section">
+                <h3>📤 내보내기</h3>
+                <div class="export-buttons">
+                    <button class="btn btn-secondary" onclick="showCSVModal()">📊 CSV 변환</button>
+                    <button class="btn btn-secondary" onclick="exportToJSON()">📄 JSON 다운로드</button>
+                    <button class="btn btn-secondary" onclick="saveDailyLogToFile()">📝 TXT 저장</button>
+                    <button class="btn" onclick="showShareModal()">📋 텍스트 공유</button>
+                    <button class="btn btn-danger" onclick="clearAllData()">🗑️ 전체 삭제</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CSV 변환 모달 -->
+    <div id="csvModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeCsvModal()">&times;</button>
+            <h3>📊 CSV 데이터</h3>
+            <p style="color: #6c757d; margin-bottom: 15px;">아래 데이터를 복사하여 Excel이나 Google Sheets에 붙여넣으세요</p>
+            <textarea id="csvText" readonly style="width: 100%; height: 300px; font-family: monospace; padding: 15px; border: 1px solid #ddd; border-radius: 8px; margin-top: 15px;"></textarea>
+            <div style="margin-top: 15px; display: flex; gap: 10px;">
+                <button class="btn" onclick="copyCSVToClipboard()">📋 CSV 복사</button>
+                <button class="btn btn-secondary" onclick="downloadCSVFile()">💾 파일 다운로드</button>
+            </div>
+            <div style="background: #e7f3ff; border-radius: 8px; padding: 15px; margin-top: 15px;">
+                <h4 style="color: #0066cc; margin-bottom: 10px;">💡 사용 방법</h4>
+                <ul style="color: #333; font-size: 14px; line-height: 1.6; margin: 0; padding-left: 20px;">
+                    <li><strong>Excel</strong>: 새 파일 → A1 셀에 붙여넣기 → 데이터 → 텍스트 나누기</li>
+                    <li><strong>Google Sheets</strong>: 새 시트 → Ctrl+V (드롭다운 → 텍스트를 열로 분할)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 공유 모달 -->
+    <div id="shareModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <h3>📋 텍스트 형태로 공유</h3>
+            <textarea id="shareText" readonly style="width: 100%; height: 300px; font-family: monospace; padding: 15px; border: 1px solid #ddd; border-radius: 8px; margin-top: 15px;"></textarea>
+            <button class="btn" onclick="copyToClipboard()" style="margin-top: 15px;">📋 클립보드에 복사</button>
+        </div>
+    </div>
+
+    <script>
+        // 전역 변수
+        let workEntries = [];
+        
+        // 페이지 로드 시 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            // 오늘 날짜 설정
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('workDate').value = today;
+            
+            // 진행률 슬라이더 이벤트
+            const progressRange = document.getElementById('progressRange');
+            const progressValue = document.getElementById('progressValue');
+            
+            progressRange.addEventListener('input', function() {
+                progressValue.textContent = this.value + '%';
+            });
+            
+            // 로컬스토리지에서 데이터 복원
+            loadFromLocalStorage();
+        });
+        
+        // 업무 추가 함수
+        function addWorkEntry() {
+            const workDate = document.getElementById('workDate').value;
+            const startTime = document.getElementById('startTime').value;
+            const endTime = document.getElementById('endTime').value;
+            const workCategory = document.getElementById('workCategory').value;
+            const projectName = document.getElementById('projectName').value;
+            const taskDetail = document.getElementById('taskDetail').value;
+            const workStatus = document.getElementById('workStatus').value;
+            const progress = document.getElementById('progressRange').value;
+            const collaborator = document.getElementById('collaborator').value;
+            const notes = document.getElementById('notes').value;
+            
+            // 유효성 검사
+            if (!workDate || !startTime || !endTime || !workCategory || !projectName || !taskDetail || !workStatus) {
+                alert('필수 항목을 모두 입력해주세요.');
+                return;
+            }
+            
+            // 새 업무 항목 생성
+            const newEntry = {
+                id: Date.now(),
+                date: workDate,
+                startTime: startTime,
+                endTime: endTime,
+                category: workCategory,
+                project: projectName,
+                task: taskDetail,
+                status: workStatus,
+                progress: parseInt(progress),
+                collaborator: collaborator,
+                notes: notes,
+                timestamp: new Date()
+            };
+            
+            // 배열에 추가
+            workEntries.push(newEntry);
+            
+            // 화면 업데이트
+            updatePreview();
+            updateSummaryStats();
+            
+            // 로컬스토리지에 저장
+            saveToLocalStorage();
+            
+            // 폼 리셋 (선택적)
+            if (confirm('업무가 추가되었습니다. 폼을 초기화하시겠습니까?')) {
+                resetForm();
+            }
+        }
+        
+        // 파일 다운로드 헬퍼 함수 (개선된 버전)
+        function downloadFile(filename, content, mimeType) {
+            try {
+                // BOM 추가 (UTF-8 인코딩 보장)
+                const BOM = '\uFEFF';
+                const contentWithBOM = BOM + content;
+                
+                const blob = new Blob([contentWithBOM], { 
+                    type: mimeType + ';charset=utf-8;' 
+                });
+                
+                // 모던 브라우저용
+                if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+                    // IE/Edge
+                    window.navigator.msSaveOrOpenBlob(blob, filename);
+                } else {
+                    // Chrome, Firefox, Safari
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = filename;
+                    
+                    document.body.appendChild(a);
+                    a.click();
+                    
+                    // 정리
+                    setTimeout(() => {
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                    }, 100);
+                }
+                
+                console.log(`파일 다운로드 시작: ${filename}`);
+                return true;
+                
+            } catch (error) {
+                console.error('파일 다운로드 실패:', error);
+                alert('파일 다운로드에 실패했습니다. 브라우저 설정을 확인해주세요.');
+                return false;
+            }
+        }
+        
+        // 데일리 로그 TXT 파일 저장 (개선된 버전)
+        function saveDailyLogToFile() {
+            if (workEntries.length === 0) {
+                alert('저장할 데이터가 없습니다.');
+                return;
+            }
+    
+            try {
+                const displayDate = workEntries.length > 0 ? workEntries[0].date : new Date().toISOString().split('T')[0];
+                let content = `📋 일일 업무일지 - ${displayDate}\n`;
+                content += `생성일시: ${new Date().toLocaleString('ko-KR')}\n\n`;
+    
+                workEntries.forEach((entry, index) => {
+                    content += `${index + 1}. [${entry.category}] ${entry.project}\n`;
+                    content += `   시간: ${entry.startTime} - ${entry.endTime}\n`;
+                    content += `   업무: ${entry.task}\n`;
+                    content += `   상태: ${entry.status} (${entry.progress}%)\n`;
+                    if (entry.collaborator) content += `   협업: ${entry.collaborator}\n`;
+                    if (entry.notes) content += `   비고: ${entry.notes}\n`;
+                    content += '\n';
+                });
+                
+                // 통계 추가
+                const totalTasks = workEntries.length;
+                const completedTasks = workEntries.filter(entry => entry.status === '완료').length;
+                const avgProgress = Math.round(workEntries.reduce((sum, entry) => sum + entry.progress, 0) / totalTasks);
+                
+                content += `\n--- 요약 통계 ---\n`;
+                content += `총 업무: ${totalTasks}개\n`;
+                content += `완료 업무: ${completedTasks}개\n`;
+                content += `평균 진행률: ${avgProgress}%\n`;
+    
+                const success = downloadFile(`데일리로그_${displayDate}.txt`, content, 'text/plain');
+                if (success) {
+                    alert('TXT 파일이 다운로드되었습니다!');
+                }
+                
+            } catch (error) {
+                console.error('TXT 저장 오류:', error);
+                alert('TXT 파일 저장 중 오류가 발생했습니다.');
+            }
+        }
+        
+        // JSON 내보내기 (개선된 버전)
+        function exportToJSON() {
+            if (workEntries.length === 0) {
+                alert('내보낼 데이터가 없습니다.');
+                return;
+            }
+            
+            try {
+                const exportData = {
+                    exportDate: new Date().toISOString(),
+                    version: '1.0',
+                    totalEntries: workEntries.length,
+                    entries: workEntries
+                };
+                
+                const jsonData = JSON.stringify(exportData, null, 2);
+                const today = new Date().toISOString().split('T')[0];
+                
+                const success = downloadFile(`업무일지_${today}.json`, jsonData, 'application/json');
+                if (success) {
+                    alert('JSON 파일이 다운로드되었습니다!');
+                }
+                
+            } catch (error) {
+                console.error('JSON 내보내기 오류:', error);
+                alert('JSON 파일 생성 중 오류가 발생했습니다.');
+            }
+        }
+        
+        // 미리보기 업데이트
+        function updatePreview() {
+            const previewContainer = document.getElementById('workLogPreview');
+            
+            if (workEntries.length === 0) {
+                previewContainer.innerHTML = '<p style="text-align: center; color: #6c757d; padding: 40px;">업무를 추가하면 여기에 표시됩니다</p>';
+                return;
+            }
+            
+            // 날짜별로 정렬
+            const sortedEntries = [...workEntries].sort((a, b) => {
+                const dateA = new Date(a.date + ' ' + a.startTime);
+                const dateB = new Date(b.date + ' ' + b.startTime);
+                return dateB - dateA;
+            });
+            
+            let html = '';
+            
+            sortedEntries.forEach(entry => {
+                const statusClass = getStatusClass(entry.status);
+                html += `
+                    <div class="work-log-entry">
+                        <div class="entry-header">
+                            <span class="entry-time">${entry.startTime} - ${entry.endTime}</span>
+                            <span class="entry-progress">${entry.progress}%</span>
+                        </div>
+                        <div class="entry-project">[${entry.category}] ${entry.project}</div>
+                        <div class="entry-task">${entry.task}</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                            <span class="entry-status ${statusClass}">${entry.status}</span>
+                            <button onclick="removeEntry(${entry.id})" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">삭제</button>
+                        </div>
+                        ${entry.collaborator ? `<div style="font-size: 0.9em; color: #6c757d; margin-top: 5px;">👥 ${entry.collaborator}</div>` : ''}
+                        ${entry.notes ? `<div style="font-size: 0.9em; color: #6c757d; margin-top: 5px;">📝 ${entry.notes}</div>` : ''}
+                    </div>
+                `;
+            });
+            
+            previewContainer.innerHTML = html;
+        }
+        
+        // 상태별 CSS 클래스
+        function getStatusClass(status) {
+            switch(status) {
+                case '계획': return 'status-planned';
+                case '진행중': return 'status-progress';
+                case '완료': return 'status-completed';
+                default: return '';
+            }
+        }
+        
+        // 요약 통계 업데이트
+        function updateSummaryStats() {
+            const statsContainer = document.getElementById('summaryStats');
+            
+            if (workEntries.length === 0) {
+                statsContainer.style.display = 'none';
+                return;
+            }
+            
+            statsContainer.style.display = 'grid';
+            
+            const totalTasks = workEntries.length;
+            const completedTasks = workEntries.filter(entry => entry.status === '완료').length;
+            const avgProgress = Math.round(workEntries.reduce((sum, entry) => sum + entry.progress, 0) / totalTasks);
+            
+            document.getElementById('totalTasks').textContent = totalTasks;
+            document.getElementById('completedTasks').textContent = completedTasks;
+            document.getElementById('avgProgress').textContent = avgProgress + '%';
+        }
+        
+        // 항목 삭제
+        function removeEntry(id) {
+            if (confirm('이 업무를 삭제하시겠습니까?')) {
+                workEntries = workEntries.filter(entry => entry.id !== id);
+                updatePreview();
+                updateSummaryStats();
+                saveToLocalStorage();
+            }
+        }
+        
+        // 폼 초기화
+        function resetForm() {
+            document.getElementById('startTime').value = '';
+            document.getElementById('endTime').value = '';
+            document.getElementById('workCategory').value = '';
+            document.getElementById('projectName').value = '';
+            document.getElementById('taskDetail').value = '';
+            document.getElementById('workStatus').value = '';
+            document.getElementById('progressRange').value = '0';
+            document.getElementById('progressValue').textContent = '0%';
+            document.getElementById('collaborator').value = '';
+            document.getElementById('notes').value = '';
+        }
+        
+        // CSV 변환 모달 표시
+        function showCSVModal() {
+            if (workEntries.length === 0) {
+                alert('변환할 데이터가 없습니다.');
+                return;
+            }
+            
+            const headers = ['날짜', '시작시간', '종료시간', '업무구분', '프로젝트명', '세부업무', '진행상황', '완료율(%)', '협업대상', '비고'];
+            const csvData = [headers];
+            
+            workEntries.forEach(entry => {
+                csvData.push([
+                    entry.date,
+                    entry.startTime,
+                    entry.endTime,
+                    entry.category,
+                    entry.project,
+                    entry.task,
+                    entry.status,
+                    entry.progress,
+                    entry.collaborator || '',
+                    entry.notes || ''
+                ]);
+            });
+            
+            const csvContent = csvData.map(row => 
+                row.map(cell => {
+                    // CSV 형식으로 변환 (쉼표, 따옴표 처리)
+                    const cellStr = String(cell);
+                    if (cellStr.includes(',') || cellStr.includes('"') || cellStr.includes('\n')) {
+                        return '"' + cellStr.replace(/"/g, '""') + '"';
+                    }
+                    return cellStr;
+                }).join(',')
+            ).join('\n');
+            
+            document.getElementById('csvText').value = csvContent;
+            document.getElementById('csvModal').style.display = 'block';
+        }
+        
+        // CSV 모달 닫기
+        function closeCsvModal() {
+            document.getElementById('csvModal').style.display = 'none';
+        }
+        
+        // CSV 클립보드 복사
+        function copyCSVToClipboard() {
+            const csvText = document.getElementById('csvText');
+            csvText.select();
+            csvText.setSelectionRange(0, 99999);
+            
+            try {
+                document.execCommand('copy');
+                alert('CSV 데이터가 클립보드에 복사되었습니다!\nExcel이나 Google Sheets에 붙여넣으세요.');
+            } catch (err) {
+                console.error('CSV 복사 실패:', err);
+                alert('복사에 실패했습니다.');
+            }
+        }
+        
+        // CSV 파일 다운로드
+        function downloadCSVFile() {
+            const csvContent = document.getElementById('csvText').value;
+            const today = new Date().toISOString().split('T')[0];
+            const success = downloadFile(`업무일지_${today}.csv`, csvContent, 'text/csv');
+            if (success) {
+                alert('CSV 파일이 다운로드되었습니다!');
+            }
+        }
+        
+        // 텍스트 공유 모달
+        function showShareModal() {
+            if (workEntries.length === 0) {
+                alert('공유할 데이터가 없습니다.');
+                return;
+            }
+            
+            const displayDate = workEntries.length > 0 ? workEntries[0].date : new Date().toISOString().split('T')[0];
+            let text = `📋 일일 업무일지 - ${displayDate}\n\n`;
+            
+            workEntries.forEach((entry, index) => {
+                text += `${index + 1}. [${entry.category}] ${entry.project}\n`;
+                text += `   시간: ${entry.startTime} - ${entry.endTime}\n`;
+                text += `   업무: ${entry.task}\n`;
+                text += `   상태: ${entry.status} (${entry.progress}%)\n`;
+                if (entry.collaborator) text += `   협업: ${entry.collaborator}\n`;
+                if (entry.notes) text += `   비고: ${entry.notes}\n`;
+                text += '\n';
+            });
+            
+            document.getElementById('shareText').value = text;
+            document.getElementById('shareModal').style.display = 'block';
+        }
+        
+        // 모달 닫기
+        function closeModal() {
+            document.getElementById('shareModal').style.display = 'none';
+        }
+        
+        // 클립보드 복사
+        function copyToClipboard() {
+            const shareText = document.getElementById('shareText');
+            shareText.select();
+            shareText.setSelectionRange(0, 99999);
+            
+            try {
+                document.execCommand('copy');
+                alert('클립보드에 복사되었습니다!');
+            } catch (err) {
+                console.error('클립보드 복사 실패:', err);
+                alert('복사에 실패했습니다.');
+            }
+        }
+        
+        // 전체 데이터 삭제
+        function clearAllData() {
+            if (confirm('모든 업무일지 데이터를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.')) {
+                workEntries = [];
+                updatePreview();
+                updateSummaryStats();
+                saveToLocalStorage();
+                alert('모든 데이터가 삭제되었습니다.');
+            }
+        }
+        
+        // 로컬스토리지에 저장
+        function saveToLocalStorage() {
+            try {
+                localStorage.setItem('workLogEntries', JSON.stringify(workEntries));
+            } catch (error) {
+                console.error('로컬스토리지 저장 실패:', error);
+            }
+        }
+        
+        // 로컬스토리지에서 불러오기
+        function loadFromLocalStorage() {
+            try {
+                const saved = localStorage.getItem('workLogEntries');
+                if (saved) {
+                    workEntries = JSON.parse(saved);
+                    updatePreview();
+                    updateSummaryStats();
+                }
+            } catch (error) {
+                console.error('로컬스토리지 로드 실패:', error);
+                workEntries = [];
+            }
+        }
+        
+        // 모달 외부 클릭시 닫기
+        window.onclick = function(event) {
+            const shareModal = document.getElementById('shareModal');
+            const csvModal = document.getElementById('csvModal');
+            
+            if (event.target === shareModal) {
+                closeModal();
+            }
+            if (event.target === csvModal) {
+                closeCsvModal();
+            }
+        }
+    </script>
+</body>
+</html>

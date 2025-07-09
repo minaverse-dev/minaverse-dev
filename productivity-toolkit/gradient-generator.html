@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그라데이션 생성기</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .controls {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .gradient-preview {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .preview-box {
+            width: 300px;
+            height: 200px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            background: linear-gradient(0deg, #6b75ff, #4ecdc4);
+            transition: all 0.3s ease;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 14px;
+        }
+
+        .color-input {
+            width: 60px;
+            height: 40px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .color-input:hover {
+            transform: scale(1.05);
+        }
+
+        .color-text {
+            flex: 1;
+            padding: 10px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .color-text:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .direction-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .direction-btn {
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: center;
+            color: #4a5568;
+        }
+
+        .direction-btn:hover {
+            border-color: #667eea;
+            background: #f7fafc;
+        }
+
+        .direction-btn.active {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .angle-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .angle-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .code-section {
+            background: #1a202c;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .code-title {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .copy-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .copy-btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+
+        .copy-btn.copied {
+            background: #48bb78;
+        }
+
+        .code-content {
+            background: #2d3748;
+            padding: 20px;
+            border-radius: 8px;
+            color: #e2e8f0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        .add-color-btn {
+            width: 100%;
+            padding: 12px;
+            background: #4ecdc4;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .add-color-btn:hover {
+            background: #3bb3a8;
+            transform: translateY(-2px);
+        }
+
+        .reset-btn {
+            width: 100%;
+            padding: 12px;
+            background: #6b75ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .reset-btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+
+        .color-stop {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .remove-color-btn {
+            background: #e53e3e;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .remove-color-btn:hover {
+            background: #c53030;
+        }
+
+        .position-input {
+            width: 80px;
+            padding: 8px 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .position-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .controls, .gradient-preview {
+                padding: 20px;
+            }
+            
+            .preview-box {
+                width: 100%;
+                max-width: 100%;
+                height: 150px;
+            }
+            
+            .color-stop {
+                flex-wrap: wrap;
+                gap: 8px;
+                padding: 12px;
+            }
+            
+            .color-input {
+                width: 50px;
+                height: 35px;
+            }
+            
+            .color-text {
+                min-width: 0;
+                flex: 1;
+                font-size: 12px;
+                padding: 8px 12px;
+            }
+            
+            .position-input {
+                width: 60px;
+                font-size: 12px;
+                padding: 6px 8px;
+            }
+            
+            .direction-grid {
+                gap: 8px;
+            }
+            
+            .direction-btn {
+                padding: 12px;
+                font-size: 11px;
+            }
+            
+            .angle-input {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+            
+            .add-color-btn, .reset-btn {
+                padding: 10px;
+                font-size: 14px;
+            }
+            
+            .code-section {
+                padding: 20px;
+                margin-top: 20px;
+            }
+            
+            .code-content {
+                padding: 15px;
+                font-size: 12px;
+                line-height: 1.4;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            .remove-color-btn {
+                padding: 6px 10px;
+                font-size: 11px;
+                margin-top: 8px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 그라데이션 생성기</h1>
+        
+        <div class="main-content">
+            <div class="controls">
+                <div class="control-group">
+                    <label>색상 포인트</label>
+                    <div id="colorStops">
+                        <!-- 기본 색상들은 JavaScript에서 생성 -->
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="add-color-btn" onclick="addColorStop()" style="flex: 1;">+ 색상 추가</button>
+                        <button class="reset-btn" onclick="resetColors()" style="flex: 1;">🔄 재설정</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>방향</label>
+                    <div class="direction-grid">
+                        <button class="direction-btn" data-angle="135">↖</button>
+                        <button class="direction-btn" data-angle="180">↑</button>
+                        <button class="direction-btn" data-angle="225">↗</button>
+                        <button class="direction-btn" data-angle="90">←</button>
+                        <button class="direction-btn" data-angle="radial">⭕</button>
+                        <button class="direction-btn" data-angle="270">→</button>
+                        <button class="direction-btn" data-angle="45">↙</button>
+                        <button class="direction-btn active" data-angle="0">↓</button>
+                        <button class="direction-btn" data-angle="315">↘</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>각도 (도)</label>
+                    <input type="number" class="angle-input" id="angleInput" value="0" min="0" max="360">
+                </div>
+            </div>
+
+            <div class="gradient-preview">
+                <div class="preview-box" id="previewBox"></div>
+                <p style="color: #666; font-size: 14px; text-align: center;">실시간 미리보기</p>
+            </div>
+        </div>
+
+        <div class="code-section">
+            <div class="code-header">
+                <span class="code-title">📋 CSS 코드</span>
+                <button class="copy-btn" onclick="copyCode()">복사</button>
+            </div>
+            <div class="code-content" id="codeContent">
+                background: linear-gradient(0deg, #6b75ff 0%, #4ecdc4 100%);
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentAngle = 0;
+        let colorStops = [
+            { color: '#6b75ff', position: 0 },
+            { color: '#4ecdc4', position: 100 }
+        ];
+        
+        function createColorStopElement(color, position, index) {
+            const stopDiv = document.createElement('div');
+            stopDiv.className = 'color-stop';
+            
+            const shouldShowRemove = colorStops.length > 2;
+            
+            stopDiv.innerHTML = `
+                <input type="color" class="color-input" value="${color}" data-index="${index}">
+                <input type="text" class="color-text" value="${color}" data-index="${index}">
+                <input type="number" class="position-input" value="${position}" min="0" max="100" data-index="${index}">
+                <span style="font-size: 12px; color: #666;">%</span>
+                ${shouldShowRemove ? `<button class="remove-color-btn" onclick="removeColorStop(${index})">삭제</button>` : ''}
+            `;
+            
+            return stopDiv;
+        }
+        
+        function renderColorStops() {
+            const container = document.getElementById('colorStops');
+            container.innerHTML = '';
+            
+            // 위치별로 정렬
+            colorStops.sort((a, b) => a.position - b.position);
+            
+            colorStops.forEach((stop, index) => {
+                const element = createColorStopElement(stop.color, stop.position, index);
+                container.appendChild(element);
+                attachColorEvents(element, index);
+            });
+        }
+        
+        function attachColorEvents(element, index) {
+            const colorInput = element.querySelector('.color-input');
+            const colorText = element.querySelector('.color-text');
+            const positionInput = element.querySelector('.position-input');
+            
+            colorInput.addEventListener('input', function() {
+                colorStops[index].color = this.value;
+                colorText.value = this.value;
+                updateGradient();
+            });
+            
+            colorText.addEventListener('input', function() {
+                if (this.value.match(/^#[0-9A-F]{6}$/i)) {
+                    colorStops[index].color = this.value;
+                    colorInput.value = this.value;
+                    updateGradient();
+                }
+            });
+            
+            positionInput.addEventListener('input', function() {
+                const newPosition = parseInt(this.value);
+                colorStops[index].position = newPosition;
+                
+                // 2개 색상일 때는 서로 보완적으로 조정
+                if (colorStops.length === 2) {
+                    if (index === 0) {
+                        // 첫 번째 색상이 변경되면 두 번째는 100 - 첫 번째
+                        colorStops[1].position = 100 - newPosition;
+                    } else {
+                        // 두 번째 색상이 변경되면 첫 번째는 100 - 두 번째
+                        colorStops[0].position = 100 - newPosition;
+                    }
+                    renderColorStops(); // 2개일 때는 다시 렌더링해서 변경된 값 표시
+                }
+                
+                updateGradient();
+            });
+        }
+        
+        function updateGradient() {
+            // 위치별로 정렬
+            const sortedStops = [...colorStops].sort((a, b) => a.position - b.position);
+            const stops = sortedStops.map(stop => `${stop.color} ${stop.position}%`);
+            
+            let gradientCSS;
+            if (currentAngle === 'radial') {
+                gradientCSS = `radial-gradient(circle, ${stops.join(', ')})`;
+            } else {
+                gradientCSS = `linear-gradient(${currentAngle}deg, ${stops.join(', ')})`;
+            }
+            
+            const previewBox = document.getElementById('previewBox');
+            const codeContent = document.getElementById('codeContent');
+            
+            previewBox.style.background = gradientCSS;
+            codeContent.textContent = `background: ${gradientCSS};`;
+        }
+        
+        function addColorStop() {
+            // 새로운 색상 추가 (#4ecdc4 색상으로)
+            colorStops.push({
+                color: '#4ecdc4',
+                position: 0 // 임시값, 아래에서 재계산됨
+            });
+            
+            // 모든 색상을 균등하게 재분배
+            redistributeColors();
+            
+            renderColorStops();
+            updateGradient();
+        }
+        
+        function resetColors() {
+            // 초기 상태로 재설정
+            colorStops = [
+                { color: '#6b75ff', position: 0 },
+                { color: '#4ecdc4', position: 100 }
+            ];
+            currentAngle = 0;
+            
+            // UI 초기화
+            document.getElementById('angleInput').value = 0;
+            document.querySelectorAll('.direction-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector('[data-angle="0"]').classList.add('active');
+            
+            renderColorStops();
+            updateGradient();
+        }
+        
+        function redistributeColors() {
+            const totalColors = colorStops.length;
+            if (totalColors <= 1) return;
+            
+            // 균등 분배: 첫 번째는 0%, 마지막은 100%, 나머지는 균등하게
+            colorStops.forEach((stop, index) => {
+                if (index === 0) {
+                    stop.position = 0;
+                } else if (index === totalColors - 1) {
+                    stop.position = 100;
+                } else {
+                    // 중간 색상들을 균등하게 분배
+                    stop.position = Math.round((100 / (totalColors - 1)) * index);
+                }
+            });
+        }
+        
+        function sortColorStops() {
+            // 위치별로 정렬만 하고 위치값은 변경하지 않음
+            colorStops.sort((a, b) => a.position - b.position);
+            renderColorStops();
+            updateGradient();
+        }
+        
+        function removeColorStop(index) {
+            if (colorStops.length > 2) {
+                colorStops.splice(index, 1);
+                // 색상 제거 후 다시 균등 분배
+                redistributeColors();
+                renderColorStops();
+                updateGradient();
+            }
+        }
+        
+        function copyCode() {
+            const codeContent = document.getElementById('codeContent');
+            const copyBtn = document.querySelector('.copy-btn');
+            
+            navigator.clipboard.writeText(codeContent.textContent).then(function() {
+                copyBtn.textContent = '복사됨!';
+                copyBtn.classList.add('copied');
+                setTimeout(() => {
+                    copyBtn.textContent = '복사';
+                    copyBtn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+        
+        // 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            // 초기 색상 stops 렌더링
+            renderColorStops();
+            
+            // 방향 버튼 이벤트
+            document.querySelectorAll('.direction-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.direction-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const angle = this.dataset.angle;
+                    if (angle === 'radial') {
+                        currentAngle = 'radial';
+                        document.getElementById('angleInput').value = '';
+                        document.getElementById('angleInput').disabled = true;
+                    } else {
+                        currentAngle = parseInt(angle);
+                        document.getElementById('angleInput').value = currentAngle;
+                        document.getElementById('angleInput').disabled = false;
+                    }
+                    updateGradient();
+                });
+            });
+            
+            // 각도 입력 이벤트
+            document.getElementById('angleInput').addEventListener('input', function() {
+                if (this.value !== '') {
+                    currentAngle = parseInt(this.value) || 0;
+                    document.querySelectorAll('.direction-btn').forEach(b => b.classList.remove('active'));
+                    updateGradient();
+                }
+            });
+            
+            // 초기 그라데이션 업데이트
+            updateGradient();
+        });
+    </script>
+</body>
+</html>
