@@ -78,38 +78,6 @@ Beauty + Technology + Design = ✨
 <details> 
 <summary><h3>🎁 Special Gift for Visitor</h3></summary>
 
-### Engineering Calculator Collection
-- 공학 계산을 위한 도구 모음
-### 전기 계산기 [electrical-calculator](https://silly-melba-008981.netlify.app/)
-> 옴의 법칙  
-> 전압 분배  
-> 전류 분배  
-> RC 회로 시정수  
-
-### 직각 삼각형 계산기 [right-triangle-calculator](https://capable-truffle-cc5444.netlify.app/)
-> 피타고라스의 정리와 삼각함수를 이용한 계산기  
-
-### 응력-변환율 계산기 [stress-strain-calculator](https://magnificent-bunny-343e55.netlify.app/)
-> 엔지니어링 설계용 응력 및 변형률 계산  
-> 응력 계산  
-> 변형률 계산  
-> 탄성계수를 이용한 응력-변형률 관계 계산  
-> 참고 | 재료별 탄성계수 참고값  
-
-### 열응력 계산기 [thermal-stress-calculator](https://lively-meerkat-26765e.netlify.app/)  
-> 뷰티 디바이스용 열응력 계산기  
-> 가열/냉각 기능 디바이스 설계를 위한 전문 계산 도구  
-> 자유 열팽창 계산  
-> 구속 열응력 계산  
-> 뷰티 디바이스 재료 데이터 베이스  
-> 범용으로 사용가능합니다! (mm 및 m 단위 등 지원)  
-
-### 단위 환산기 [unit-converter](https://tubular-rolypoly-2d3616.netlify.app/)  
-> 압력 환산  
-> 온도 환산  
-> 전력 환산  
-> 뷰티 디바이스 설계 전용으로 제작되었습니다.  
-
 ## Productivity-toolkit
 - 업무 관리를 위한 웹 기반 생산성 도구 모음
   
