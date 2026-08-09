@@ -80,13 +80,13 @@ Beauty + Technology + Design = ✨
 
 ## Productivity-toolkit
 - 업무 관리를 위한 웹 기반 생산성 도구 모음
-- 
+
 ### 일일 업무일지 생성기 r1 [daily-work-log-generator-r1](https://daily-work-log-generator-r1.netlify.app/)
-> ✅ 프로젝트 Master 연동, ✅ 업무구분 Master 연동, ✅ 협업대상 Master 연동 (드롭다운 선택)<br>
-> 📋 일일 업무일지 구글 스프레드 시트와 연동<br>
-> 📊 CSV/JSON/TXT 다양한 형태로 내보내기<br>
-> 💾 로컬 스토리지 자동 저장<br>
-> 📱 다양한 프로젝트에 활용 가능<br>
+- ✅ 프로젝트 Master 연동, 업무구분 Master 연동, 협업대상 Master 연동 (드롭다운 선택)
+- 📋 일일 업무일지 구글 스프레드 시트와 연동
+- 📊 CSV/JSON/TXT 다양한 형태로 내보내기
+- 💾 로컬 스토리지 자동 저장
+- 📱 다양한 프로젝트에 활용 가능
   
 ### 일일 업무일지 생성기 [daily-work-log-generator](https://whimsical-kitten-a7d062.netlify.app/)
 > 📋 일일 업무일지 생성 및 관리  
