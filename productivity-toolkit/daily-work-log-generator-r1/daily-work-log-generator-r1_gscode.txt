@@ -1,0 +1,101 @@
+// 구글 App Script | 업무일지 생성기 r1
+function testWrite() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getSheetByName('WORK_LOG');
+
+  const now = new Date();
+
+  sheet.appendRow([
+    'WL-TEST-001',
+    '2026-08-09',
+    '14:00',
+    '15:00',
+    '개발',
+    'P26001',
+    '업무일지 생성기 r1',
+    'Google Sheets 연동 테스트',
+    '진행중',
+    10,
+    '',
+    'Apps Script 테스트 데이터',
+    now,
+    now
+  ]);
+}
+function doPost(e) {
+  try {
+    const sheet = SpreadsheetApp
+      .getActiveSpreadsheet()
+      .getSheetByName('WORK_LOG');
+
+    const data = JSON.parse(e.postData.contents);
+
+    const now = new Date();
+
+    // 자동 생성되는 업무일지 ID
+    const today = Utilities.formatDate(
+      now,
+      Session.getScriptTimeZone(),
+      'yyyyMMdd'
+    );
+
+    const lastRow = sheet.getLastRow();
+    const logNumber = Math.max(1, lastRow);
+
+    const logId = `WL-${today}-${String(logNumber).padStart(3, '0')}`;
+
+    sheet.appendRow([
+      logId,
+      data.date || '',
+      data.startTime || '',
+      data.endTime || '',
+      data.category || '',
+      data.projectId || '',
+      data.projectName || '',
+      data.task || '',
+      data.status || '',
+      Number(data.progress) || 0,
+      data.collaborator || '',
+      data.notes || '',
+      now,
+      now
+    ]);
+
+    return ContentService
+      .createTextOutput(JSON.stringify({
+        success: true,
+        log_id: logId,
+        message: '업무가 저장되었습니다.'
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (error) {
+
+    return ContentService
+      .createTextOutput(JSON.stringify({
+        success: false,
+        error: error.toString()
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+async function saveToGoogleSheets(data) {
+    try {
+        const response = await fetch(GAS_URL, {
+            method: 'POST',
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (!result.success) {
+            throw new Error(result.error || 'Google Sheets 저장 실패');
+        }
+
+        return result;
+
+    } catch (error) {
+        console.error('Google Sheets 저장 오류:', error);
+        throw error;
+    }
+}
