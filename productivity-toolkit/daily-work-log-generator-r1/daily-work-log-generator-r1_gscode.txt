@@ -1,4 +1,4 @@
-// 구글 App Script | 업무일지 생성기 r1
+// 구글 App Script | 업무일지 MASTER r1
 function testWrite() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const sheet = ss.getSheetByName('WORK_LOG');
@@ -12,7 +12,7 @@ function testWrite() {
     '15:00',
     '개발',
     'P26001',
-    '업무일지 생성기 r1',
+    '업무일지 MASTER r1',
     'Google Sheets 연동 테스트',
     '진행중',
     10,
