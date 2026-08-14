@@ -6,6 +6,8 @@ Transforming decades of engineering mastery into next-generation beauty technolo
 💄 I build beauty devices, AI-powered personalization tools, and web platforms.  
 Beauty + Technology + Design = ✨
 
+- 홈페이지 [kinesta](https://www.kinesta.co.kr)
+- 제품 · 기사 · 특허 · 프로젝트
 ---
 
 ## 🎯 독보적이고 독창적인 뷰티 디바이스 설계
